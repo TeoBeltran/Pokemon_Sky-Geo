@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Pokédex de Pokémon Sky &amp; Geo">
+<link rel="icon" href="graphics/Icons/icon001.png">
+<title>Pokédex Sky &amp; Geo</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand" id="brand" title="Volver a la Pokédex">
+      <div class="lens"></div>
+      <div class="dots"><i style="background:#ff5a5a"></i><i style="background:#ffd34d"></i><i style="background:#5fd67a"></i></div>
+      <div><h1>Pokédex</h1><small id="subtitle">Sky &amp; Geo</small></div>
+    </div>
+    <div class="top-actions">
+      <button class="tbtn" id="btnTheme" title="Cambiar tema">☾</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- Carga / error -->
+  <section id="viewEmpty">
+    <div class="drop" id="statusBox">
+      <div class="pball spin"></div>
+      <h2 id="statusTitle">Cargando Pokédex…</h2>
+      <p id="statusText">Leyendo los datos del juego.</p>
+    </div>
+  </section>
+
+  <!-- List -->
+  <section id="viewList" class="hidden">
+    <div class="toolbar">
+      <div class="field search">🔎<input id="q" type="search" placeholder="Buscar por nombre, número o nombre interno…" autocomplete="off"></div>
+      <div class="field"><label>Tipo</label><select id="fType1"></select></div>
+      <div class="field"><label>Tipo 2</label><select id="fType2"></select></div>
+      <div class="field"><label>Orden</label>
+        <select id="sortSel">
+          <option value="id">Número</option><option value="name">Nombre</option>
+          <option value="hp">PS</option><option value="atk">Ataque</option><option value="def">Defensa</option>
+          <option value="spa">At. Esp.</option><option value="spd">Def. Esp.</option><option value="spe">Velocidad</option>
+          <option value="bst">Total de stats</option>
+        </select>
+        <select id="sortDir"><option value="asc">↑ Asc</option><option value="desc">↓ Desc</option></select>
+      </div>
+      <button class="clear" id="btnClear">Limpiar</button>
+      <div class="count num" id="count"></div>
+    </div>
+    <div class="table-card">
+      <table class="dex">
+        <thead><tr>
+          <th class="nosort" style="width:64px"></th>
+          <th data-k="id" style="width:70px">N.º <span class="arr"></span></th>
+          <th data-k="name">Nombre <span class="arr"></span></th>
+          <th class="nosort">Tipos</th>
+          <th data-k="hp" class="r">PS <span class="arr"></span></th>
+          <th data-k="atk" class="r">Atq <span class="arr"></span></th>
+          <th data-k="def" class="r">Def <span class="arr"></span></th>
+          <th data-k="spa" class="r">At.Esp <span class="arr"></span></th>
+          <th data-k="spd" class="r">Df.Esp <span class="arr"></span></th>
+          <th data-k="spe" class="r">Vel <span class="arr"></span></th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Detail -->
+  <section id="viewDetail" class="hidden"></section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
