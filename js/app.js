@@ -54,6 +54,8 @@ const S = {
    Utilidades
    ========================================================= */
 const $ = s => document.querySelector(s);
+/* evita que un elemento faltante (ej. HTML viejo en caché) frene toda la página */
+const on = (sel, ev, fn) => { const e = $(sel); if (e) e.addEventListener(ev, fn); };
 const el = (tag, attrs, ...kids) => {
   const e = document.createElement(tag);
   if (attrs) for (const k in attrs){
@@ -91,7 +93,17 @@ function statColor(v){
 /* ---------- Rutas de imágenes ---------- */
 const fileUrl = rel => encodeURI(`${GRAPHICS}/${rel}`).replace(/#/g,"%23");
 const iconUrl = id => fileUrl(`Icons/icon${pad(id)}.png`);
-const battlerUrl = (id, folder) => fileUrl(`Battlers/${folder}/${pad(id)}.png`);
+const spriteName = (id, form) => pad(id) + (form ? "_" + form : "");
+const battlerUrl = (id, folder, form) => fileUrl(`Battlers/${folder}/${spriteName(id, form)}.png`);
+/* "forma uno" / "FORMA UNO" -> "Forma Uno" */
+const titleCase = s => String(s||"").trim().toLowerCase().split(" ").map(w => w ? w.charAt(0).toUpperCase() + w.slice(1) : w).join(" ");
+/* FormNames=Base,Forma Dos,...  -> [{n:0,name:"Base"}, {n:1,name:"Forma Dos"}...] (forma 0 = sprite sin sufijo) */
+function parseForms(raw){
+  if (!raw || !raw.trim()) return [];
+  const names = raw.split(",").map(titleCase);
+  if (names.length < 2 && !names[0]) return [];
+  return names.map((name,n)=>({n, name: name || (n === 0 ? "Normal" : `Forma ${n}`)}));
+}
 
 function iconEl(id){
   const box = el("span",{class:"icon"});
@@ -193,42 +205,30 @@ function parseItems(txt){
   return m;
 }
 /* ---------- encounters.txt ----------
-   Bloques:  "005 # Nombre del mapa" / densidades "25,10,10" / método ("Land", "Cave"...) / "ESPECIE,nivMin,nivMax"
-   Cada método tiene huecos con probabilidades fijas (las de Essentials). */
-const ENC_CHANCES = {
-  Land:[20,20,10,10,10,10,5,5,4,4,1,1], LandMorning:[20,20,10,10,10,10,5,5,4,4,1,1],
-  LandDay:[20,20,10,10,10,10,5,5,4,4,1,1], LandNight:[20,20,10,10,10,10,5,5,4,4,1,1],
-  Cave:[20,20,10,10,10,10,5,5,4,4,1,1], BugContest:[20,20,10,10,10,10,5,5,4,4,1,1],
-  Water:[60,30,5,4,1], RockSmash:[60,30,5,4,1],
-  OldRod:[70,30], GoodRod:[60,20,20], SuperRod:[40,40,15,4,1],
-  HeadbuttLow:[30,25,20,10,5,5,4,1], HeadbuttHigh:[30,25,20,10,5,5,4,1]
-};
-const ENC_METHOD = {
-  Land:["Hierba","🌿"], LandMorning:["Hierba · Mañana","🌅"], LandDay:["Hierba · Día","☀️"], LandNight:["Hierba · Noche","🌙"],
-  Cave:["Cueva","⛰️"], Water:["Surf","🌊"], RockSmash:["Golpe Roca","🪨"], OldRod:["Caña Vieja","🎣"], GoodRod:["Caña Buena","🎣"],
-  SuperRod:["Supercaña","🎣"], HeadbuttLow:["Cabezazo (común)","🌳"], HeadbuttHigh:["Cabezazo (raro)","🌳"], BugContest:["Concurso de bichos","🐛"]
-};
-const ENC_ORDER = Object.keys(ENC_METHOD);
+   "#####"            -> separador entre mapas
+   "007 # Ciudad Alolla" -> se usa solo el nombre (después del #)
+   "25,10,10" y "LandMorning" -> se ignoran
+   "FURNIS,5,6"       -> se usa solo el nombre del Pokémon
+   Resultado: ESPECIE -> [nombres de mapas] (sin repetidos, en el orden del archivo) */
 function parseEncounters(txt){
-  const bySpecies = new Map(); let map = null, method = null, slot = 0;
+  const bySpecies = new Map(); let mapName = null;
   for (const raw of lines(txt)){
-    const l = raw.trim(); if (!l || /^#+$/.test(l) || (l.startsWith("#") && !map)) continue;
-    let m;
-    if ((m = /^(\d+)\s*(?:#\s*(.*))?$/.exec(l))){ map = {id:parseInt(m[1],10), name:(m[2]||"").trim() || `Mapa ${parseInt(m[1],10)}`}; method = null; continue; }
-    if (!map) continue;
-    if (/^\d+\s*,\s*\d+\s*,\s*\d+$/.test(l) && !method) continue;           // densidades
-    if (/^[A-Za-z]+$/.test(l)){ method = l; slot = 0; continue; }
-    if (!method || !(m = /^([A-Za-z0-9_]+)\s*,\s*(\d+)\s*(?:,\s*(\d+))?/.exec(l))) continue;
-    const sp = m[1].toUpperCase(), min = +m[2], max = m[3] ? +m[3] : +m[2];
-    const ch = (ENC_CHANCES[method]||[])[slot]; slot++;
-    if (!bySpecies.has(sp)) bySpecies.set(sp, new Map());
-    const maps = bySpecies.get(sp);
-    if (!maps.has(map.id)) maps.set(map.id, {id:map.id, name:map.name, methods:new Map()});
-    const ms = maps.get(map.id).methods;
-    const cur = ms.get(method) || {min, max, chance:0, known:true};
-    cur.min = Math.min(cur.min, min); cur.max = Math.max(cur.max, max);
-    if (ch == null) cur.known = false; else cur.chance += ch;
-    ms.set(method, cur);
+    const l = raw.trim();
+    if (!l || l.charAt(0) === "#") continue;               // vacías y "#####"
+    const hash = l.indexOf("#");
+    if (hash > 0 && /^\d/.test(l)){                        // "007 # Ciudad Alolla"
+      mapName = l.slice(hash + 1).trim() || ("Mapa " + l.slice(0, hash).trim());
+      continue;
+    }
+    if (/^\d+$/.test(l)){ mapName = "Mapa " + l; continue; } // "007" sin nombre
+    if (!mapName) continue;
+    const comma = l.indexOf(",");
+    if (comma <= 0) continue;                               // "LandMorning", "Cave"...
+    const sp = l.slice(0, comma).trim().toUpperCase();
+    if (!/^[A-Z]/.test(sp)) continue;                       // "25,10,10"
+    let arr = bySpecies.get(sp);
+    if (!arr){ arr = []; bySpecies.set(sp, arr); }
+    if (arr.indexOf(mapName) < 0) arr.push(mapName);
   }
   return bySpecies;
 }
@@ -283,7 +283,9 @@ function applyText(kind, txt){
 
 async function loadData(){
   const results = await Promise.allSettled(Object.entries(DATA_FILES).map(async ([kind, url]) => {
-    const r = await fetch(url, {cache:"no-cache"});
+    const ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const t = setTimeout(() => ctl && ctl.abort(), 15000);
+    let r; try { r = await fetch(url, {cache:"no-cache", signal: ctl ? ctl.signal : undefined}); } finally { clearTimeout(t); }
     if (!r.ok) throw new Error(`${url} (${r.status})`);
     return [kind, await r.text()];
   }));
@@ -318,7 +320,7 @@ function buildTypeFilters(){
   const count = new Map(); S.list.forEach(p=>p.types.forEach(t=>count.set(t,(count.get(t)||0)+1)));
   const order = Object.keys(TYPES);
   const ts = [...count.keys()].sort((a,b)=>{ const ia=order.indexOf(a), ib=order.indexOf(b); return (ia<0?99:ia)-(ib<0?99:ib) || a.localeCompare(b); });
-  const box = $("#typeChips"); box.replaceChildren();
+  const box = $("#typeChips"); if (!box) return; box.replaceChildren();
   for (const t of ts){
     const [name, color] = typeInfo(t);
     const b = el("button",{class:"chip", "data-type":t, style:`--tc:${color}`, title:`Filtrar por tipo ${name}`},
@@ -338,8 +340,8 @@ function syncChips(){
     const on = S.filter.types.includes(b.dataset.type);
     b.classList.toggle("on", on); b.setAttribute("aria-pressed", on);
   });
-  for (const [id,key] of [["#optMono","mono"],["#optWild","wild"]]){ const b = $(id); b.classList.toggle("on", S.filter[key]); b.setAttribute("aria-pressed", S.filter[key]); }
-  $("#optWild").classList.toggle("hidden", !S.loaded.encounters);
+  for (const [id,key] of [["#optMono","mono"],["#optWild","wild"]]){ const b = $(id); if (!b) continue; b.classList.toggle("on", S.filter[key]); b.setAttribute("aria-pressed", S.filter[key]); }
+  const w = $("#optWild"); if (w) w.classList.toggle("hidden", !S.loaded.encounters);
 }
 
 function filtered(){
@@ -438,9 +440,9 @@ function evoTree(p, curId, seen){
   return el("div",{class:"evo-branch"}, node, col);
 }
 
-function spriteBox(id, folder, label){
+function spriteBox(id, folder, label, form){
   const box = el("div",{class:"sprite-box"}, el("span",{class:"lbl"},label));
-  const img = el("img",{src:battlerUrl(id,folder), alt:label});
+  const img = el("img",{src:battlerUrl(id,folder,form), alt:label});
   img.onload = () => {
     // sprites chicos (estilo GBA) se agrandan x2 con pixeles nítidos
     if (img.naturalHeight <= 96 && img.naturalWidth < img.naturalHeight*2){ img.style.width = img.naturalWidth*2+"px"; img.style.height = img.naturalHeight*2+"px"; }
@@ -451,7 +453,7 @@ function spriteBox(id, folder, label){
       img.replaceWith(d);
     }
   };
-  img.onerror = () => img.replaceWith(el("div",{class:"noimg"},"Sin imagen", el("br"), el("small",null,`${folder}\\${pad(id)}.png`)));
+  img.onerror = () => img.replaceWith(el("div",{class:"noimg"},"Sin imagen", el("br"), el("small",null,`${folder}\\${spriteName(id,form)}.png`)));
   box.append(img); return box;
 }
 
@@ -491,36 +493,19 @@ function accordion(title, count, body, open){
 function encountersCard(p){
   const card = el("div",{class:"card full"}, el("h3",null,"Dónde encontrarlo"));
   if (!S.loaded.encounters){ card.append(el("div",{class:"evo-none",html:"No se encontró <code>"+esc(DATA_FILES.encounters)+"</code>."})); return card; }
-  const maps = S.enc.get((p.internal||"").toUpperCase());
-  if (!maps || !maps.size){
+  const places = S.enc.get((p.internal||"").toUpperCase());
+  if (!places || !places.length){
     const pv = S.prevo.get(p.id);
     card.append(el("div",{class:"evo-none"}, "No aparece en estado salvaje.",
       pv ? [" Se obtiene evolucionando a ", el("a",{href:"#/p/"+pv.from.id}, pv.from.name), "."] : " Puede conseguirse por evento, regalo o intercambio."));
     return card;
   }
-  const list = [...maps.values()].sort((a,b)=>a.name.localeCompare(b.name,"es",{numeric:true}));
-  card.querySelector("h3").append(el("span",{class:"h3-pill num"}, list.length === 1 ? "1 lugar" : `${list.length} lugares`));
-  const wrap = el("div",{class:"enc-grid"});
-  for (const m of list){
-    const rows = [...m.methods.entries()].sort((a,b)=>ENC_ORDER.indexOf(a[0])-ENC_ORDER.indexOf(b[0]));
-    const box = el("div",{class:"enc-place"},
-      el("div",{class:"enc-head"}, el("span",{class:"enc-pin"},"📍"), el("b",null,m.name), el("small",{class:"num"},"Mapa "+pad(m.id))));
-    for (const [meth, d] of rows){
-      const [label, ico] = ENC_METHOD[meth] || [meth, "•"];
-      const lv = d.min === d.max ? `Nv. ${d.min}` : `Nv. ${d.min}–${d.max}`;
-      box.append(el("div",{class:"enc-row"},
-        el("span",{class:"enc-meth"}, el("span",{class:"enc-ico"},ico), label),
-        el("span",{class:"enc-lv num"}, lv),
-        d.known ? el("span",{class:"enc-pct num", title:"Probabilidad de que salga al encontrar un Pokémon con este método"},
-          el("span",{class:"enc-bar"}, el("i",{style:`width:${Math.min(100,d.chance)}%`})), d.chance+"%") : el("span",{class:"enc-pct"},"—")));
-    }
-    wrap.append(box);
-  }
-  card.append(wrap);
+  card.querySelector("h3").append(el("span",{class:"h3-pill num"}, places.length === 1 ? "1 lugar" : places.length + " lugares"));
+  card.append(el("div",{class:"places"}, places.map(n => el("span",{class:"place"}, el("span",{class:"place-pin"},"📍"), n))));
   return card;
 }
 
-function renderDetail(id){
+function renderDetail(id, formN){
   const p = S.byId.get(id), v = $("#viewDetail");
   if (!p){ v.replaceChildren(el("div",{class:"card"},"No existe el Pokémon #"+pad(id)+". ", el("a",{href:"#/"},"Volver a la lista"))); return; }
   const f = p.f;
@@ -535,18 +520,40 @@ function renderDetail(id){
   );
 
   const c1 = typeInfo(p.types[0])[1], c2 = typeInfo(p.types[1]||p.types[0])[1];
+  const forms = parseForms(f.FormNames);
+  let form = forms.some(x=>x.n===formN) ? formN : 0;
   const fr = el("div",{class:"sprites"});
-  const drawSprites = () => fr.replaceChildren(
-    spriteBox(p.id, S.shiny ? "FrontShiny" : "Front", S.shiny ? "Frente ✦" : "Frente"),
-    spriteBox(p.id, S.shiny ? "BackShiny" : "Back", S.shiny ? "Espalda ✦" : "Espalda"));
+  const formLbl = el("div",{class:"form-name"});
+  const drawSprites = () => {
+    fr.replaceChildren(
+      spriteBox(p.id, S.shiny ? "FrontShiny" : "Front", S.shiny ? "Frente ✦" : "Frente", form),
+      spriteBox(p.id, S.shiny ? "BackShiny" : "Back", S.shiny ? "Espalda ✦" : "Espalda", form));
+    const cur = forms.find(x=>x.n===form);
+    formLbl.textContent = cur ? cur.name : "";
+    formLbl.classList.toggle("hidden", !cur);
+  };
   drawSprites();
+  let formPicker = null;
+  if (forms.length > 1){
+    const sel = el("select",{class:"form-select","aria-label":"Elegir forma"},
+      forms.map(x=>el("option",{value:x.n}, x.name)));
+    sel.value = String(form);
+    sel.onchange = () => {
+      form = +sel.value; drawSprites();
+      history.replaceState(null, "", "#/p/" + p.id + (form ? "/" + form : ""));
+    };
+    formPicker = el("label",{class:"form-picker"},
+      el("span",{class:"fp-lbl"}, "Forma"), sel, el("span",{class:"fp-count num"}, forms.length));
+  }
   const chk = el("input",{type:"checkbox"}); chk.checked = S.shiny;
   chk.onchange = () => { S.shiny = chk.checked; drawSprites(); };
   const art = el("div",{class:"hero-art",style:`--t1:${c1};--t2:${c2}`},
     el("div",{class:"idbig num"}, "#"+pad(p.id)),
     el("h2",null,p.name),
+    formLbl,
     f.Kind ? el("div",{class:"kind"}, "Pokémon "+f.Kind) : null,
     el("div",{class:"types"}, p.types.map(t=>typeBadge(t,true))),
+    formPicker,
     fr,
     el("div",{class:"shiny-toggle"}, el("label",{class:"switch"}, chk, el("span",{class:"knob"}), "✦ Ver shiny"))
   );
@@ -564,7 +571,7 @@ function renderDetail(id){
     ["Nombre interno", p.internal||"—"]
   ];
   if (wild) kv.push(["Objeto salvaje", wild]);
-  if (f.FormNames) kv.push(["Formas", f.FormNames.split(",").map(s=>s.trim()).filter(Boolean).join(" · ")]);
+  if (forms.length > 1) kv.push(["Formas", forms.map(x=>x.name).join(" · ")]);
   const kvEl = el("div",{class:"kv"}, kv.map(x => x === null ? genderCell : el("div",null, el("b",null,x[0]), el("span",{class:"num"},x[1]))));
   const info = el("div",{class:"hero-info"},
     f.Pokedex && f.Pokedex !== "-" ? el("div",{class:"dex-entry"}, f.Pokedex) : null, kvEl);
@@ -634,10 +641,10 @@ function show(which){
 let lastView = "";
 function route(){
   if (!S.list.length){ show("#viewEmpty"); lastView = "empty"; return; }
-  const m = /^#\/p\/(\d+)/.exec(location.hash);
+  const m = /^#\/p\/(\d+)(?:\/(\d+))?/.exec(location.hash);
   if (m){
     if (lastView === "list") S.listScroll = window.scrollY;
-    renderDetail(parseInt(m[1],10)); show("#viewDetail"); window.scrollTo(0,0); lastView = "detail";
+    renderDetail(parseInt(m[1],10), m[2] ? parseInt(m[2],10) : 0); show("#viewDetail"); window.scrollTo(0,0); lastView = "detail";
   } else {
     renderList(); show("#viewList"); document.title = "Pokédex Sky & Geo";
     if (lastView === "detail") window.scrollTo(0, S.listScroll);
@@ -648,22 +655,22 @@ function route(){
 /* =========================================================
    Eventos
    ========================================================= */
-$("#brand").onclick = () => { location.hash = "#/"; };
+on("#brand","click", () => { location.hash = "#/"; });
 
 let qT;
-$("#q").addEventListener("input", e => { clearTimeout(qT); qT = setTimeout(()=>{ S.filter.q = e.target.value; renderList(); }, 90); });
-$("#optMono").onclick = () => { S.filter.mono = !S.filter.mono; renderList(); };
-$("#optWild").onclick = () => { S.filter.wild = !S.filter.wild; renderList(); };
-$("#sortSel").onchange = e => { S.filter.sort = e.target.value; renderList(); };
-$("#sortDir").onchange = e => { S.filter.dir = e.target.value; renderList(); };
-$("#btnClear").onclick = () => { S.filter = {q:"",types:[],mono:false,wild:false,sort:"id",dir:"asc"}; $("#q").value=""; renderList(); };
+on("#q","input", e => { clearTimeout(qT); qT = setTimeout(()=>{ S.filter.q = e.target.value; renderList(); }, 90); });
+on("#optMono","click", () => { S.filter.mono = !S.filter.mono; renderList(); });
+on("#optWild","click", () => { S.filter.wild = !S.filter.wild; renderList(); });
+on("#sortSel","change", e => { S.filter.sort = e.target.value; renderList(); });
+on("#sortDir","change", e => { S.filter.dir = e.target.value; renderList(); });
+on("#btnClear","click", () => { S.filter = {q:"",types:[],mono:false,wild:false,sort:"id",dir:"asc"}; $("#q").value=""; renderList(); });
 document.querySelectorAll("table.dex th[data-k]").forEach(th => th.onclick = () => {
   const k = th.dataset.k;
   if (S.filter.sort === k) S.filter.dir = S.filter.dir === "asc" ? "desc" : "asc";
   else { S.filter.sort = k; S.filter.dir = (k === "id" || k === "name") ? "asc" : "desc"; }
   renderList();
 });
-$("#tbody").addEventListener("click", e => { const tr = e.target.closest("tr[data-id]"); if (tr) go(+tr.dataset.id); });
+on("#tbody","click", e => { const tr = e.target.closest("tr[data-id]"); if (tr) go(+tr.dataset.id); });
 
 document.addEventListener("keydown", e => {
   if (e.target.matches("input,select,textarea")) { if (e.key === "Escape") e.target.blur(); return; }
@@ -678,13 +685,20 @@ document.addEventListener("keydown", e => {
 
 function applyTheme(t){ if (t) document.documentElement.setAttribute("data-theme",t); else document.documentElement.removeAttribute("data-theme"); }
 applyTheme(lsGet(LS.theme));
-$("#btnTheme").onclick = () => {
+on("#btnTheme","click", () => {
   const cur = document.documentElement.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   const nt = cur === "dark" ? "light" : "dark"; applyTheme(nt); lsSet(LS.theme, nt);
-};
+});
 
 window.addEventListener("hashchange", route);
 
-/* init */
-loadData();
+/* init: si algo falla, mostrar el error en vez de quedar "cargando" para siempre */
+function fatal(msg){
+  const box = $("#statusBox"); if (!box) return;
+  show("#viewEmpty"); box.classList.add("error");
+  $("#statusTitle").textContent = "Hubo un error al cargar";
+  $("#statusText").innerHTML = esc(msg) + "<br><small>Probá recargar con Ctrl+F5.</small>";
+  const pb = $("#statusBox .pball"); if (pb) pb.classList.remove("spin");
+}
+loadData().catch(err => { console.error(err); fatal(err && err.message || String(err)); });
 })();

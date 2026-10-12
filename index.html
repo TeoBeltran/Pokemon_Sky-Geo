@@ -37,8 +37,6 @@
   <section id="viewList" class="hidden">
     <div class="toolbar">
       <div class="field search">🔎<input id="q" type="search" placeholder="Buscar por nombre, número o nombre interno…" autocomplete="off"></div>
-      <div class="field"><label>Tipo</label><select id="fType1"></select></div>
-      <div class="field"><label>Tipo 2</label><select id="fType2"></select></div>
       <div class="field"><label>Orden</label>
         <select id="sortSel">
           <option value="id">Número</option><option value="name">Nombre</option>
@@ -50,6 +48,17 @@
       </div>
       <button class="clear" id="btnClear">Limpiar</button>
       <div class="count num" id="count"></div>
+      <div class="chips-row">
+        <span class="chips-label">Tipos <small>(hasta 2)</small></span>
+        <div class="type-chips" id="typeChips"></div>
+      </div>
+      <div class="chips-row">
+        <span class="chips-label">Más</span>
+        <div class="type-chips">
+          <button class="chip chip-opt" id="optMono" aria-pressed="false">Monotipo</button>
+          <button class="chip chip-opt" id="optWild" aria-pressed="false">🌿 Se captura en estado salvaje</button>
+        </div>
+      </div>
     </div>
     <div class="table-card">
       <table class="dex">
