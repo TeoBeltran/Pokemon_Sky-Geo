@@ -84,9 +84,13 @@ table.dex tbody tr:last-child td{border-bottom:0}
 .idnum{color:var(--text-3);font-family:var(--mono);font-size:13px}
 .pname{font-weight:600}
 .pname small{display:block;color:var(--text-3);font-weight:400;font-size:12px}
-.stat-cell{font-family:var(--mono);font-size:13px;position:relative;width:62px}
+.stat-cell{font-family:var(--mono);font-size:13px;position:relative;width:72px;padding-left:16px!important;padding-right:16px!important}
+.stat-cell.bst{font-weight:700;width:80px}
+table.dex th.bst{color:var(--text)}
+/* líneas divisorias entre columnas (salvo entre icono y número) */
+table.dex th:nth-child(n+3),table.dex td:nth-child(n+3){border-left:1px solid var(--border)}
 .stat-cell span{position:relative;z-index:1}
-.stat-cell:before{content:"";position:absolute;right:6px;bottom:6px;height:3px;width:calc(var(--w) * 46px);border-radius:2px;background:var(--c);opacity:.85}
+.stat-cell:before{content:"";position:absolute;right:16px;bottom:6px;height:3px;width:calc(var(--w) * 46px);border-radius:2px;background:var(--c);opacity:.85}
 
 /* icons: Essentials icons are 2-frame strips */
 .icon{width:48px;height:48px;display:block;position:relative;flex:none}

@@ -317,6 +317,8 @@ function renderList(){
       const v = p.st[k];
       tr.append(el("td",{class:"r stat-cell num",style:`--w:${Math.min(v,200)/200};--c:${statColor(v)}`}, el("span",null,v)));
     }
+    const t = p.st.bst;
+    tr.append(el("td",{class:"r stat-cell bst num",style:`--w:${Math.min(t,720)/720};--c:${statColor(t/6)}`}, el("span",null,t)));
     frag.append(tr);
   }
   tb.replaceChildren(frag);
