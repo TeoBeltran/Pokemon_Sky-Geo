@@ -11,7 +11,8 @@ const DATA_FILES = {
   moves:     "data/moves.txt",
   abilities: "data/abilities.txt",
   tm:        "data/tm.txt",
-  items:     "data/items.txt"
+  items:     "data/items.txt",
+  encounters:"data/encounters.txt"
 };
 const LS = {theme:"dex.theme"};
 
@@ -44,7 +45,8 @@ const S = {
   list:[], byId:new Map(), byInt:new Map(), prevo:new Map(),
   moves:new Map(), abilities:new Map(), items:new Map(), tm:new Map(), tmOrder:[],
   loaded:{}, tmNo:new Map(),
-  filter:{q:"",t1:"",t2:"",sort:"id",dir:"asc"},
+  filter:{q:"",types:[],mono:false,wild:false,sort:"id",dir:"asc"},
+  enc:new Map(),
   shiny:false, listScroll:0
 };
 
@@ -190,6 +192,47 @@ function parseItems(txt){
   }
   return m;
 }
+/* ---------- encounters.txt ----------
+   Bloques:  "005 # Nombre del mapa" / densidades "25,10,10" / método ("Land", "Cave"...) / "ESPECIE,nivMin,nivMax"
+   Cada método tiene huecos con probabilidades fijas (las de Essentials). */
+const ENC_CHANCES = {
+  Land:[20,20,10,10,10,10,5,5,4,4,1,1], LandMorning:[20,20,10,10,10,10,5,5,4,4,1,1],
+  LandDay:[20,20,10,10,10,10,5,5,4,4,1,1], LandNight:[20,20,10,10,10,10,5,5,4,4,1,1],
+  Cave:[20,20,10,10,10,10,5,5,4,4,1,1], BugContest:[20,20,10,10,10,10,5,5,4,4,1,1],
+  Water:[60,30,5,4,1], RockSmash:[60,30,5,4,1],
+  OldRod:[70,30], GoodRod:[60,20,20], SuperRod:[40,40,15,4,1],
+  HeadbuttLow:[30,25,20,10,5,5,4,1], HeadbuttHigh:[30,25,20,10,5,5,4,1]
+};
+const ENC_METHOD = {
+  Land:["Hierba","🌿"], LandMorning:["Hierba · Mañana","🌅"], LandDay:["Hierba · Día","☀️"], LandNight:["Hierba · Noche","🌙"],
+  Cave:["Cueva","⛰️"], Water:["Surf","🌊"], RockSmash:["Golpe Roca","🪨"], OldRod:["Caña Vieja","🎣"], GoodRod:["Caña Buena","🎣"],
+  SuperRod:["Supercaña","🎣"], HeadbuttLow:["Cabezazo (común)","🌳"], HeadbuttHigh:["Cabezazo (raro)","🌳"], BugContest:["Concurso de bichos","🐛"]
+};
+const ENC_ORDER = Object.keys(ENC_METHOD);
+function parseEncounters(txt){
+  const bySpecies = new Map(); let map = null, method = null, slot = 0;
+  for (const raw of lines(txt)){
+    const l = raw.trim(); if (!l || /^#+$/.test(l) || (l.startsWith("#") && !map)) continue;
+    let m;
+    if ((m = /^(\d+)\s*(?:#\s*(.*))?$/.exec(l))){ map = {id:parseInt(m[1],10), name:(m[2]||"").trim() || `Mapa ${parseInt(m[1],10)}`}; method = null; continue; }
+    if (!map) continue;
+    if (/^\d+\s*,\s*\d+\s*,\s*\d+$/.test(l) && !method) continue;           // densidades
+    if (/^[A-Za-z]+$/.test(l)){ method = l; slot = 0; continue; }
+    if (!method || !(m = /^([A-Za-z0-9_]+)\s*,\s*(\d+)\s*(?:,\s*(\d+))?/.exec(l))) continue;
+    const sp = m[1].toUpperCase(), min = +m[2], max = m[3] ? +m[3] : +m[2];
+    const ch = (ENC_CHANCES[method]||[])[slot]; slot++;
+    if (!bySpecies.has(sp)) bySpecies.set(sp, new Map());
+    const maps = bySpecies.get(sp);
+    if (!maps.has(map.id)) maps.set(map.id, {id:map.id, name:map.name, methods:new Map()});
+    const ms = maps.get(map.id).methods;
+    const cur = ms.get(method) || {min, max, chance:0, known:true};
+    cur.min = Math.min(cur.min, min); cur.max = Math.max(cur.max, max);
+    if (ch == null) cur.known = false; else cur.chance += ch;
+    ms.set(method, cur);
+  }
+  return bySpecies;
+}
+
 function parseTM(txt){
   const bySpecies = new Map(), order = []; let mv = null;
   for (const raw of lines(txt)){
@@ -234,6 +277,7 @@ function applyText(kind, txt){
   else if (kind === "abilities") S.abilities = parseAbilities(txt);
   else if (kind === "items") S.items = parseItems(txt);
   else if (kind === "tm"){ const r = parseTM(txt); S.tm = r.bySpecies; S.tmOrder = r.order; }
+  else if (kind === "encounters") S.enc = parseEncounters(txt);
   S.loaded[kind] = true;
 }
 
@@ -271,27 +315,42 @@ function afterLoad(){
    Lista
    ========================================================= */
 function buildTypeFilters(){
-  const set = new Set(); S.list.forEach(p=>p.types.forEach(t=>set.add(t)));
+  const count = new Map(); S.list.forEach(p=>p.types.forEach(t=>count.set(t,(count.get(t)||0)+1)));
   const order = Object.keys(TYPES);
-  const ts = [...set].sort((a,b)=>{ const ia=order.indexOf(a), ib=order.indexOf(b); return (ia<0?99:ia)-(ib<0?99:ib) || a.localeCompare(b); });
-  for (const [sel, first] of [["#fType1","Todos"],["#fType2","Cualquiera"]]){
-    const s = $(sel), v = s.value; s.innerHTML = "";
-    s.append(el("option",{value:""}, first));
-    if (sel === "#fType2") s.append(el("option",{value:"__mono"}, "Solo monotipo"));
-    ts.forEach(t => s.append(el("option",{value:t}, typeInfo(t)[0])));
-    s.value = v;
+  const ts = [...count.keys()].sort((a,b)=>{ const ia=order.indexOf(a), ib=order.indexOf(b); return (ia<0?99:ia)-(ib<0?99:ib) || a.localeCompare(b); });
+  const box = $("#typeChips"); box.replaceChildren();
+  for (const t of ts){
+    const [name, color] = typeInfo(t);
+    const b = el("button",{class:"chip", "data-type":t, style:`--tc:${color}`, title:`Filtrar por tipo ${name}`},
+      el("i",{class:"dot"}), name, el("span",{class:"chip-n num"}, count.get(t)));
+    b.onclick = () => toggleType(t);
+    box.append(b);
   }
+  syncChips();
+}
+function toggleType(t){
+  const ts = S.filter.types, i = ts.indexOf(t);
+  if (i >= 0) ts.splice(i,1); else { ts.push(t); if (ts.length > 2) ts.shift(); }
+  renderList();
+}
+function syncChips(){
+  document.querySelectorAll("#typeChips .chip").forEach(b=>{
+    const on = S.filter.types.includes(b.dataset.type);
+    b.classList.toggle("on", on); b.setAttribute("aria-pressed", on);
+  });
+  for (const [id,key] of [["#optMono","mono"],["#optWild","wild"]]){ const b = $(id); b.classList.toggle("on", S.filter[key]); b.setAttribute("aria-pressed", S.filter[key]); }
+  $("#optWild").classList.toggle("hidden", !S.loaded.encounters);
 }
 
 function filtered(){
-  const {q,t1,t2,sort,dir} = S.filter;
+  const {q,types,mono,wild,sort,dir} = S.filter;
   const qq = q.trim().toLowerCase();
   const qn = /^#?\d+$/.test(qq) ? parseInt(qq.replace("#",""),10) : null;
   let arr = S.list.filter(p => {
     if (qq){ if (qn !== null){ if (p.id !== qn && !p.search.includes(qq)) return false; } else if (!p.search.includes(qq)) return false; }
-    if (t1 && !p.types.includes(t1)) return false;
-    if (t2 === "__mono"){ if (p.types.length !== 1) return false; }
-    else if (t2 && !p.types.includes(t2)) return false;
+    for (const t of types) if (!p.types.includes(t)) return false;
+    if (mono && p.types.length !== 1) return false;
+    if (wild && !S.enc.has((p.internal||"").toUpperCase())) return false;
     return true;
   });
   const m = dir === "desc" ? -1 : 1;
@@ -327,6 +386,7 @@ function renderList(){
     th.querySelector(".arr").textContent = th.dataset.k === S.filter.sort ? (S.filter.dir === "asc" ? "▲" : "▼") : "";
   });
   $("#sortSel").value = S.filter.sort; $("#sortDir").value = S.filter.dir;
+  syncChips();
 }
 
 /* =========================================================
@@ -428,6 +488,38 @@ function accordion(title, count, body, open){
   return d;
 }
 
+function encountersCard(p){
+  const card = el("div",{class:"card full"}, el("h3",null,"Dónde encontrarlo"));
+  if (!S.loaded.encounters){ card.append(el("div",{class:"evo-none",html:"No se encontró <code>"+esc(DATA_FILES.encounters)+"</code>."})); return card; }
+  const maps = S.enc.get((p.internal||"").toUpperCase());
+  if (!maps || !maps.size){
+    const pv = S.prevo.get(p.id);
+    card.append(el("div",{class:"evo-none"}, "No aparece en estado salvaje.",
+      pv ? [" Se obtiene evolucionando a ", el("a",{href:"#/p/"+pv.from.id}, pv.from.name), "."] : " Puede conseguirse por evento, regalo o intercambio."));
+    return card;
+  }
+  const list = [...maps.values()].sort((a,b)=>a.name.localeCompare(b.name,"es",{numeric:true}));
+  card.querySelector("h3").append(el("span",{class:"h3-pill num"}, list.length === 1 ? "1 lugar" : `${list.length} lugares`));
+  const wrap = el("div",{class:"enc-grid"});
+  for (const m of list){
+    const rows = [...m.methods.entries()].sort((a,b)=>ENC_ORDER.indexOf(a[0])-ENC_ORDER.indexOf(b[0]));
+    const box = el("div",{class:"enc-place"},
+      el("div",{class:"enc-head"}, el("span",{class:"enc-pin"},"📍"), el("b",null,m.name), el("small",{class:"num"},"Mapa "+pad(m.id))));
+    for (const [meth, d] of rows){
+      const [label, ico] = ENC_METHOD[meth] || [meth, "•"];
+      const lv = d.min === d.max ? `Nv. ${d.min}` : `Nv. ${d.min}–${d.max}`;
+      box.append(el("div",{class:"enc-row"},
+        el("span",{class:"enc-meth"}, el("span",{class:"enc-ico"},ico), label),
+        el("span",{class:"enc-lv num"}, lv),
+        d.known ? el("span",{class:"enc-pct num", title:"Probabilidad de que salga al encontrar un Pokémon con este método"},
+          el("span",{class:"enc-bar"}, el("i",{style:`width:${Math.min(100,d.chance)}%`})), d.chance+"%") : el("span",{class:"enc-pct"},"—")));
+    }
+    wrap.append(box);
+  }
+  card.append(wrap);
+  return card;
+}
+
 function renderDetail(id){
   const p = S.byId.get(id), v = $("#viewDetail");
   if (!p){ v.replaceChildren(el("div",{class:"card"},"No existe el Pokémon #"+pad(id)+". ", el("a",{href:"#/"},"Volver a la lista"))); return; }
@@ -510,7 +602,7 @@ function renderDetail(id){
       `Evoluciona de ${pv.from.name}: ${evoText(pv.evo)}.`));
   }
 
-  const grid = el("div",{class:"grid2"}, stats, abil, evoCard);
+  const grid = el("div",{class:"grid2"}, stats, abil, evoCard, encountersCard(p));
 
   /* moves */
   const lvRows = p.lvl.map(([l,k])=>[l===0?"Evo":l, k]);
@@ -560,11 +652,11 @@ $("#brand").onclick = () => { location.hash = "#/"; };
 
 let qT;
 $("#q").addEventListener("input", e => { clearTimeout(qT); qT = setTimeout(()=>{ S.filter.q = e.target.value; renderList(); }, 90); });
-$("#fType1").onchange = e => { S.filter.t1 = e.target.value; renderList(); };
-$("#fType2").onchange = e => { S.filter.t2 = e.target.value; renderList(); };
+$("#optMono").onclick = () => { S.filter.mono = !S.filter.mono; renderList(); };
+$("#optWild").onclick = () => { S.filter.wild = !S.filter.wild; renderList(); };
 $("#sortSel").onchange = e => { S.filter.sort = e.target.value; renderList(); };
 $("#sortDir").onchange = e => { S.filter.dir = e.target.value; renderList(); };
-$("#btnClear").onclick = () => { S.filter = {q:"",t1:"",t2:"",sort:"id",dir:"asc"}; $("#q").value=""; $("#fType1").value=""; $("#fType2").value=""; renderList(); };
+$("#btnClear").onclick = () => { S.filter = {q:"",types:[],mono:false,wild:false,sort:"id",dir:"asc"}; $("#q").value=""; renderList(); };
 document.querySelectorAll("table.dex th[data-k]").forEach(th => th.onclick = () => {
   const k = th.dataset.k;
   if (S.filter.sort === k) S.filter.dir = S.filter.dir === "asc" ? "desc" : "asc";
