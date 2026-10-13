@@ -6,7 +6,7 @@
 <meta name="description" content="Pokédex de Pokémon Sky &amp; Geo">
 <link rel="icon" href="graphics/Icons/icon001.png">
 <title>Pokédex Sky &amp; Geo</title>
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css?v=20261012d">
 </head>
 <body>
 
@@ -42,7 +42,7 @@
           <option value="id">Número</option><option value="name">Nombre</option>
           <option value="hp">PS</option><option value="atk">Ataque</option><option value="def">Defensa</option>
           <option value="spa">At. Esp.</option><option value="spd">Def. Esp.</option><option value="spe">Velocidad</option>
-          <option value="bst">Total de stats</option>
+          <option value="bst">Total de stats</option><option value="evo">Evolución</option>
         </select>
         <select id="sortDir"><option value="asc">↑ Asc</option><option value="desc">↓ Desc</option></select>
       </div>
@@ -67,6 +67,7 @@
           <th data-k="id" style="width:70px">N.º <span class="arr"></span></th>
           <th data-k="name">Nombre <span class="arr"></span></th>
           <th class="nosort">Tipos</th>
+          <th data-k="evo">Evol. <span class="arr"></span></th>
           <th data-k="hp" class="r">PS <span class="arr"></span></th>
           <th data-k="atk" class="r">Atq <span class="arr"></span></th>
           <th data-k="def" class="r">Def <span class="arr"></span></th>
@@ -86,6 +87,16 @@
 
 <div class="toast" id="toast"></div>
 
-<script src="js/app.js"></script>
+<script>
+  /* si el script principal falla, mostrar el error en lugar de quedar cargando */
+  window.addEventListener("error", function (e) {
+    var t = document.getElementById("statusTitle"), x = document.getElementById("statusText");
+    if (t && x && !document.getElementById("viewEmpty").classList.contains("hidden")) {
+      t.textContent = "Hubo un error al cargar";
+      x.textContent = (e.message || "Error desconocido") + " — probá recargar con Ctrl+F5.";
+    }
+  });
+</script>
+<script src="js/app.js?v=20261012d"></script>
 </body>
 </html>

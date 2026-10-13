@@ -12,7 +12,8 @@ const DATA_FILES = {
   abilities: "data/abilities.txt",
   tm:        "data/tm.txt",
   items:     "data/items.txt",
-  encounters:"data/encounters.txt"
+  encounters:"data/encounters.txt",
+  forms:     "data/forms.txt"
 };
 const LS = {theme:"dex.theme"};
 
@@ -45,8 +46,8 @@ const S = {
   list:[], byId:new Map(), byInt:new Map(), prevo:new Map(),
   moves:new Map(), abilities:new Map(), items:new Map(), tm:new Map(), tmOrder:[],
   loaded:{}, tmNo:new Map(),
-  filter:{q:"",types:[],mono:false,wild:false,sort:"id",dir:"asc"},
-  enc:new Map(),
+  filter:{q:"",types:[],mono:false,wild:false,nowild:false,sort:"id",dir:"asc"},
+  enc:new Map(), formData:new Map(),
   shiny:false, listScroll:0
 };
 
@@ -103,6 +104,43 @@ function parseForms(raw){
   const names = raw.split(",").map(titleCase);
   if (names.length < 2 && !names[0]) return [];
   return names.map((name,n)=>({n, name: name || (n === 0 ? "Normal" : `Forma ${n}`)}));
+}
+/* Las formas "Ancestral" son secretas: no se muestran, solo se avisa que existen */
+const isSecretForm = x => /ancestral/i.test(x.name);
+
+/* ---------- forms.txt ----------
+   [ESPECIE,forma]  ->  Type1= / Type2= / BaseStats= (mismo orden que pokemon.txt) / Abilities= / HiddenAbility=
+   Solo hace falta poner lo que CAMBIA respecto de la forma base. */
+function parseFormData(txt){
+  const m = new Map(); let cur = null;
+  for (const raw of lines(txt)){
+    const l = raw.trim(); if (!l || l.charAt(0) === "#") continue;
+    const h = /^\[\s*([A-Za-z0-9_]+)\s*,\s*(\d+)\s*\]$/.exec(l);
+    if (h){ cur = {}; m.set(h[1].toUpperCase() + "," + (+h[2]), cur); continue; }
+    if (!cur) continue;
+    const i = l.indexOf("="); if (i < 0) continue;
+    cur[l.slice(0,i).trim()] = l.slice(i+1).trim();
+  }
+  return m;
+}
+/* Devuelve tipos/stats/habilidades de una forma, aplicando forms.txt sobre la base */
+function formView(p, form){
+  const d = form != null ? S.formData.get((p.internal||"").toUpperCase() + "," + form) : null;
+  if (!d) return {types:p.types, st:p.st, evs:p.evs, abilities:p.abilities, hidden:p.hidden, changed:false};
+  let types = p.types.slice();
+  if (d.Type1) types[0] = d.Type1.toUpperCase();
+  if (d.Type2 !== undefined) types[1] = d.Type2.toUpperCase();
+  types = types.filter(Boolean); if (types[1] === types[0]) types.pop();
+  let st = p.st;
+  if (d.BaseStats){
+    const bs = d.BaseStats.split(",").map(n=>parseInt(n,10)||0); st = {};
+    STATS.forEach(([k],i)=>{ st[k] = bs[PBS_TO_STD[i]] || 0; });
+    st.bst = STATS.reduce((a,[k])=>a+st[k],0);
+  }
+  const list = v => v.split(",").map(x=>x.trim().toUpperCase()).filter(Boolean);
+  return {types, st, evs:p.evs,
+    abilities: d.Abilities ? list(d.Abilities) : p.abilities,
+    hidden: d.HiddenAbility !== undefined ? list(d.HiddenAbility) : p.hidden, changed:true};
 }
 
 function iconEl(id){
@@ -278,6 +316,7 @@ function applyText(kind, txt){
   else if (kind === "items") S.items = parseItems(txt);
   else if (kind === "tm"){ const r = parseTM(txt); S.tm = r.bySpecies; S.tmOrder = r.order; }
   else if (kind === "encounters") S.enc = parseEncounters(txt);
+  else if (kind === "forms") S.formData = parseFormData(txt);
   S.loaded[kind] = true;
 }
 
@@ -340,12 +379,12 @@ function syncChips(){
     const on = S.filter.types.includes(b.dataset.type);
     b.classList.toggle("on", on); b.setAttribute("aria-pressed", on);
   });
-  for (const [id,key] of [["#optMono","mono"],["#optWild","wild"]]){ const b = $(id); if (!b) continue; b.classList.toggle("on", S.filter[key]); b.setAttribute("aria-pressed", S.filter[key]); }
-  const w = $("#optWild"); if (w) w.classList.toggle("hidden", !S.loaded.encounters);
+  for (const [id,key] of [["#optMono","mono"],["#optWild","wild"],["#optNoWild","nowild"]]){ const b = $(id); if (!b) continue; b.classList.toggle("on", S.filter[key]); b.setAttribute("aria-pressed", S.filter[key]); }
+  for (const id of ["#optWild","#optNoWild"]){ const w = $(id); if (w) w.classList.toggle("hidden", !S.loaded.encounters); }
 }
 
 function filtered(){
-  const {q,types,mono,wild,sort,dir} = S.filter;
+  const {q,types,mono,wild,nowild,sort,dir} = S.filter;
   const qq = q.trim().toLowerCase();
   const qn = /^#?\d+$/.test(qq) ? parseInt(qq.replace("#",""),10) : null;
   let arr = S.list.filter(p => {
@@ -353,6 +392,7 @@ function filtered(){
     for (const t of types) if (!p.types.includes(t)) return false;
     if (mono && p.types.length !== 1) return false;
     if (wild && !S.enc.has((p.internal||"").toUpperCase())) return false;
+    if (nowild && S.enc.has((p.internal||"").toUpperCase())) return false;
     return true;
   });
   const m = dir === "desc" ? -1 : 1;
@@ -360,10 +400,44 @@ function filtered(){
     let r;
     if (sort === "id") r = a.id - b.id;
     else if (sort === "name") r = a.name.localeCompare(b.name,"es");
+    else if (sort === "evo") r = evoSortKey(a) - evoSortKey(b);
     else r = (a.st[sort] - b.st[sort]) || 0;
     return (r || (a.id - b.id)) * (r ? m : 1);
   });
   return arr;
+}
+
+/* Texto corto para la columna "Evol." de la lista */
+function evoShort(e){
+  const m = e.method, n = parseInt(e.param,10);
+  if (/^Level$|^Ninjask$|^Silcoon$|^Cascoon$|^AttackGreater$|^DefenseGreater$|^AtkDefEqual$/.test(m)) return "Nv. " + n;
+  if (m === "LevelMale")   return "Nv. " + n + " ♂";
+  if (m === "LevelFemale") return "Nv. " + n + " ♀";
+  if (/^LevelDay|^LevelDayTime$/.test(m)) return "Nv. " + n + " ☀";
+  if (m === "LevelNight")  return "Nv. " + n + " ☾";
+  if (/^Level/.test(m))    return "Nv. " + n + "*";
+  if (/^Item|HoldItem$/.test(m)) return "Item";
+  if (/^Happiness/.test(m)) return "Amistad";
+  if (/^Trade/.test(m))    return "Intercambio";
+  if (m === "HasMove")     return "Movimiento";
+  if (m === "HasInParty")  return "Equipo";
+  if (m === "Location")    return "Lugar";
+  if (m === "Beauty")      return "Belleza";
+  if (m === "Crits")       return "Críticos";
+  if (m === "Shedinja")    return "Especial";
+  return "Especial";
+}
+function evoCell(p){
+  if (!p.evo.length) return null;
+  const labels = []; for (const e of p.evo){ const t = evoShort(e); if (labels.indexOf(t) < 0) labels.push(t); }
+  return labels;
+}
+/* clave para ordenar por "Evol.": por nivel primero, después el resto, y al final los que no evolucionan */
+function evoSortKey(p){
+  if (!p.evo.length) return 99999;
+  let best = 5000;
+  for (const e of p.evo){ const n = parseInt(e.param,10); if (/^Level|^Ninjask|^Silcoon|^Cascoon|Greater$|^AtkDefEqual/.test(e.method) && !isNaN(n)) best = Math.min(best, n); }
+  return best;
 }
 
 function renderList(){
@@ -374,6 +448,9 @@ function renderList(){
     tr.append(el("td",{class:"idnum num"}, "#"+pad(p.id)));
     tr.append(el("td",{class:"pname"}, p.name));
     tr.append(el("td",null, el("div",{class:"types"}, p.types.map(t=>typeBadge(t)))));
+    const ev = evoCell(p);
+    tr.append(el("td",{class:"evo-cell", title: ev ? p.evo.map(e=>speciesName(e.to)+": "+evoText(e)).join("\n") : null},
+      ev ? ev.map(t=>el("span",{class:"evo-tag"+(t.startsWith("Nv.")?" lv":"")}, t)) : null));
     for (const [k] of STATS){
       const v = p.st[k];
       tr.append(el("td",{class:"r stat-cell num",style:`--w:${Math.min(v,200)/200};--c:${statColor(v)}`}, el("span",null,v)));
@@ -519,9 +596,12 @@ function renderDetail(id, formN){
     next ? el("button",{class:"navbtn",onclick:()=>go(next.id),title:"Siguiente (→)"}, el("span",null,"#"+pad(next.id)+" "+next.name), iconEl(next.id), "›") : null
   );
 
-  const c1 = typeInfo(p.types[0])[1], c2 = typeInfo(p.types[1]||p.types[0])[1];
-  const forms = parseForms(f.FormNames);
+  const allForms = parseForms(f.FormNames);
+  const hasSecret = allForms.some(isSecretForm);
+  const forms = allForms.filter(x => !isSecretForm(x));
   let form = forms.some(x=>x.n===formN) ? formN : 0;
+  const V = formView(p, form);
+  const c1 = typeInfo(V.types[0])[1], c2 = typeInfo(V.types[1]||V.types[0])[1];
   const fr = el("div",{class:"sprites"});
   const formLbl = el("div",{class:"form-name"});
   const drawSprites = () => {
@@ -530,7 +610,7 @@ function renderDetail(id, formN){
       spriteBox(p.id, S.shiny ? "BackShiny" : "Back", S.shiny ? "Espalda ✦" : "Espalda", form));
     const cur = forms.find(x=>x.n===form);
     formLbl.textContent = cur ? cur.name : "";
-    formLbl.classList.toggle("hidden", !cur);
+    formLbl.classList.toggle("hidden", !cur || forms.length < 2);
   };
   drawSprites();
   let formPicker = null;
@@ -539,8 +619,9 @@ function renderDetail(id, formN){
       forms.map(x=>el("option",{value:x.n}, x.name)));
     sel.value = String(form);
     sel.onchange = () => {
-      form = +sel.value; drawSprites();
-      history.replaceState(null, "", "#/p/" + p.id + (form ? "/" + form : ""));
+      const n = +sel.value, y = window.scrollY;
+      history.replaceState(null, "", "#/p/" + p.id + (n ? "/" + n : ""));
+      renderDetail(p.id, n); window.scrollTo(0, y);   // re-dibuja tipos, stats y habilidades de la forma
     };
     formPicker = el("label",{class:"form-picker"},
       el("span",{class:"fp-lbl"}, "Forma"), sel, el("span",{class:"fp-count num"}, forms.length));
@@ -552,7 +633,8 @@ function renderDetail(id, formN){
     el("h2",null,p.name),
     formLbl,
     f.Kind ? el("div",{class:"kind"}, "Pokémon "+f.Kind) : null,
-    el("div",{class:"types"}, p.types.map(t=>typeBadge(t,true))),
+    el("div",{class:"types"}, V.types.map(t=>typeBadge(t,true))),
+    hasSecret ? el("div",{class:"secret-form",title:"Forma secreta"}, "✧ Tiene forma ancestral") : null,
     formPicker,
     fr,
     el("div",{class:"shiny-toggle"}, el("label",{class:"switch"}, chk, el("span",{class:"knob"}), "✦ Ver shiny"))
@@ -579,14 +661,16 @@ function renderDetail(id, formN){
   const hero = el("div",{class:"hero"}, art, info);
 
   /* stats */
-  const stats = el("div",{class:"card"}, el("h3",null,"Estadísticas base"));
+  const curForm = forms.find(x=>x.n===form);
+  const stats = el("div",{class:"card"}, el("h3",null,"Estadísticas base",
+    V.changed && forms.length > 1 && curForm ? el("span",{class:"h3-pill"}, "Forma " + curForm.name.replace(/^Forma\s+/i,"")) : null));
   for (const [k,label] of STATS){
-    const val = p.st[k];
+    const val = V.st[k];
     stats.append(el("div",{class:"statrow"}, el("span",{class:"sn"},label), el("span",{class:"sv num"},val),
       el("div",{class:"bar"}, el("i",{style:`width:${Math.min(100,val/255*100)}%;background:${statColor(val)}`})),
-      el("span",{class:"ev"}, p.evs[k] ? `+${p.evs[k]} EV` : "")));
+      el("span",{class:"ev"}, V.evs[k] ? `+${V.evs[k]} EV` : "")));
   }
-  stats.append(el("div",{class:"statrow total"}, el("span",{class:"sn"},"Total"), el("span",{class:"sv num"},p.st.bst), el("div"), el("span")));
+  stats.append(el("div",{class:"statrow total"}, el("span",{class:"sn"},"Total"), el("span",{class:"sv num"},V.st.bst), el("div"), el("span")));
 
   /* abilities */
   const abil = el("div",{class:"card"}, el("h3",null,"Habilidades"));
@@ -594,9 +678,9 @@ function renderDetail(id, formN){
     return el("div",{class:"ability"}, el("b",null, a ? a.name : pretty(k)), hidden ? el("span",{class:"tag"},"Oculta") : null,
       el("span",{class:"mint",style:"margin-left:8px;color:var(--text-3);font-family:var(--mono);font-size:11.5px"}, k),
       a && a.desc ? el("p",null,a.desc) : null); };
-  p.abilities.forEach(k=>abil.append(abItem(k,false)));
-  p.hidden.forEach(k=>abil.append(abItem(k,true)));
-  if (!p.abilities.length && !p.hidden.length) abil.append(el("div",{class:"evo-none"},"Sin habilidades definidas."));
+  V.abilities.forEach(k=>abil.append(abItem(k,false)));
+  V.hidden.forEach(k=>abil.append(abItem(k,true)));
+  if (!V.abilities.length && !V.hidden.length) abil.append(el("div",{class:"evo-none"},"Sin habilidades definidas."));
 
   /* evolution */
   const evoCard = el("div",{class:"card full"}, el("h3",null,"Línea evolutiva"));
@@ -660,14 +744,15 @@ on("#brand","click", () => { location.hash = "#/"; });
 let qT;
 on("#q","input", e => { clearTimeout(qT); qT = setTimeout(()=>{ S.filter.q = e.target.value; renderList(); }, 90); });
 on("#optMono","click", () => { S.filter.mono = !S.filter.mono; renderList(); });
-on("#optWild","click", () => { S.filter.wild = !S.filter.wild; renderList(); });
+on("#optWild","click", () => { S.filter.wild = !S.filter.wild; if (S.filter.wild) S.filter.nowild = false; renderList(); });
+on("#optNoWild","click", () => { S.filter.nowild = !S.filter.nowild; if (S.filter.nowild) S.filter.wild = false; renderList(); });
 on("#sortSel","change", e => { S.filter.sort = e.target.value; renderList(); });
 on("#sortDir","change", e => { S.filter.dir = e.target.value; renderList(); });
-on("#btnClear","click", () => { S.filter = {q:"",types:[],mono:false,wild:false,sort:"id",dir:"asc"}; $("#q").value=""; renderList(); });
+on("#btnClear","click", () => { S.filter = {q:"",types:[],mono:false,wild:false,nowild:false,sort:"id",dir:"asc"}; $("#q").value=""; renderList(); });
 document.querySelectorAll("table.dex th[data-k]").forEach(th => th.onclick = () => {
   const k = th.dataset.k;
   if (S.filter.sort === k) S.filter.dir = S.filter.dir === "asc" ? "desc" : "asc";
-  else { S.filter.sort = k; S.filter.dir = (k === "id" || k === "name") ? "asc" : "desc"; }
+  else { S.filter.sort = k; S.filter.dir = (k === "id" || k === "name" || k === "evo") ? "asc" : "desc"; }
   renderList();
 });
 on("#tbody","click", e => { const tr = e.target.closest("tr[data-id]"); if (tr) go(+tr.dataset.id); });
