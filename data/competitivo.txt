@@ -1,0 +1,2163 @@
+#==============================================================================
+# COMPETITIVO - recomendaciones generadas a partir de los datos del juego
+# (tipos, estadísticas, movimientos que aprende, habilidades y objetos).
+# Podés editar cualquier línea a mano: la web muestra lo que haya acá.
+#
+# Rol=, Puntuacion= (0 a 5, admite medias: 3.5), Habilidad=, Naturaleza=, EVs=,
+# Set1= / Set2= (Nombre | Mov | Mov | Mov | Mov),
+# Objetos= (separados por |), Compañeros= (separados por |), Debilidades=, Nota=
+#==============================================================================
+
+[001]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Yurevil (al nivel 16). Su forma final es Vermithief. No conviene usarlo en competitivo hasta evolucionar.
+
+[002]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Vermithief (al nivel 36). No conviene usarlo en competitivo hasta evolucionar.
+
+[003]
+Rol=Tanque ofensivo especial
+Puntuacion=3
+Habilidad=Espesura
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Setup (Desarrollo) | Desarrollo | Lluevehojas | Alarido | Poder Pasado
+Set2=Choice / 4 ataques | Lluevehojas | Alarido | Poder Pasado | Residuos
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Esterpent | Anoxium | Hearbuncle
+Debilidades=Bicho x4, Fuego x2, Hielo x2, Lucha x2, Veneno x2, Volador x2, Hada x2
+Nota=Cuidado con Bicho (daño x4).
+Nota=Inmune a Psíquico.
+
+[004]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Wattix (al nivel 18). Su forma final es Thundoatix. No conviene usarlo en competitivo hasta evolucionar.
+
+[005]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Thundoatix (al nivel 36). No conviene usarlo en competitivo hasta evolucionar.
+
+[006]
+Rol=Glass cannon especial
+Puntuacion=4
+Habilidad=Mar Llamas
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Lanzallamas | Voltiocambio | Bola Sombra | Poder Pasado
+Set2=Ofensivo con utilidad | Lanzallamas | Voltiocambio | Bola Sombra | Rugido
+Objetos=Gafas Elección | Vidasfera | Cinta Experto
+Compañeros=Jasilex | Nortalcon | Linkidra
+Debilidades=Tierra x4, Agua x2, Roca x2
+Nota=Cuidado con Tierra (daño x4).
+
+[007]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Frankold (al nivel 17). Su forma final es Austreel. No conviene usarlo en competitivo hasta evolucionar.
+
+[008]
+Rol=Usable con Mineral Evolutivo · Muro físico / Soporte
+Puntuacion=2.5
+Habilidad=Punk Rock
+Naturaleza=Osada (+Def, -Atq)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Salpicar | Bostezo | Disparo Espejo | Niebla
+Set2=4 ataques (Chaleco Asalto / Choice) | Salpicar | Disparo Espejo | Voz Cautivadora | Vozarrón
+Objetos=Mineral Evolutivo | Restos | Casco Dentado
+Compañeros=Arnero | Thynatch | Linkidra
+Debilidades=Eléctrico x2, Lucha x2, Tierra x2
+Nota=Con Mineral Evolutivo su Defensa y Defensa Especial suben x1.5: aguanta muchísimo para ser una preevolución.
+Nota=Evoluciona a Austreel (al nivel 35). Evolucionado suele rendir más.
+Nota=Inmune a Veneno.
+
+[009]
+Rol=Muro físico / Soporte
+Puntuacion=5
+Habilidad=Punk Rock
+Naturaleza=Osada (+Def, -Atq)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Salpicar | Bostezo | Disparo Espejo | Niebla
+Set2=4 ataques (Chaleco Asalto / Choice) | Salpicar | Disparo Espejo | Voz Cautivadora | Poder Pasado
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Arnero | Thynatch | Linkidra
+Debilidades=Eléctrico x2, Lucha x2, Tierra x2
+Nota=Inmune a Veneno.
+
+[010]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Thylwade (al nivel 17). Su forma final es Thynatch. No conviene usarlo en competitivo hasta evolucionar.
+
+[011]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Thynatch (al nivel 32). No conviene usarlo en competitivo hasta evolucionar.
+
+[012]
+Rol=Glass cannon físico
+Puntuacion=4.5
+Habilidad=Intimidación
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Mazazo | Garra Umbría | Tumba Rocas | Retribución
+Set2=Resistente con recuperación | Fotosíntesis | Mazazo | Garra Umbría | Rugido
+Objetos=Cinta Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Guleye | Flamaire | Austreel
+Debilidades=Fuego x2, Hielo x2, Volador x2, Fantasma x2, Siniestro x2
+Nota=Inmune a Normal, Lucha.
+
+[013]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Pykervios (al nivel 16). Su forma final es Hefatsyro. No conviene usarlo en competitivo hasta evolucionar.
+
+[014]
+Rol=Usable con Mineral Evolutivo · Muro físico / Soporte
+Puntuacion=2
+Habilidad=Puño Férreo
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Envite Ígneo | Cabeza de Hierro | Terratemblor | Mordisco
+Objetos=Mineral Evolutivo | Restos | Casco Dentado
+Compañeros=Nortalcon | Fronado | Linkidra
+Debilidades=Tierra x4, Agua x2, Lucha x2
+Nota=Con Mineral Evolutivo su Defensa y Defensa Especial suben x1.5: aguanta muchísimo para ser una preevolución.
+Nota=Evoluciona a Hefatsyro (al nivel 37). Evolucionado suele rendir más.
+Nota=Cuidado con Tierra (daño x4).
+Nota=Inmune a Veneno.
+
+[015]
+Rol=Wallbreaker físico (lento)
+Puntuacion=4
+Habilidad=Puño Férreo
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Envite Ígneo | Manotazo fundido | Testarazo | Terratemblor
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Nortalcon | Fronado | Linkidra
+Debilidades=Tierra x4, Agua x2, Lucha x2
+Nota=Cuidado con Tierra (daño x4).
+Nota=Tiene prioridad con Ataque Rápido para rematar.
+Nota=Inmune a Veneno.
+
+[016]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Anostium (al nivel 16). Su forma final es Anoxium. No conviene usarlo en competitivo hasta evolucionar.
+
+[017]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Anoxium (al nivel 36). No conviene usarlo en competitivo hasta evolucionar.
+
+[018]
+Rol=Sweeper especial
+Puntuacion=4
+Habilidad=Torrente
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Hidrobomba | Bomba Ácida | Poder Pasado | Bola Sombra
+Set2=Ofensivo con utilidad | Hidrobomba | Bomba Ácida | Poder Pasado | Tóxico
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Vermithief | Arnero | Sigmadeep
+Debilidades=Eléctrico x2, Tierra x2, Psíquico x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+
+[019]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Droucoon (al nivel 7). Su forma final es Flamalina. No conviene usarlo en competitivo hasta evolucionar.
+
+[020]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Flamalina (al nivel 14). No conviene usarlo en competitivo hasta evolucionar.
+
+[021]
+Rol=Soporte / Utilidad
+Puntuacion=1
+Habilidad=Enjambre
+Naturaleza=Osada (+Def, -Atq)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Bola de Polen | Desarme | Lanzallamas | Psicorrayo
+Set2=Utilidad | Bola de Polen | Lanzallamas | Psicorrayo | Electrotela
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Austreel | Yaguattoo | Jasilex
+Debilidades=Roca x4, Agua x2, Volador x2
+Nota=Cuidado con Roca (daño x4).
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+
+[022]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Hidrinch (al nivel 17). No conviene usarlo en competitivo hasta evolucionar.
+
+[023]
+Rol=Atacante físico
+Puntuacion=1.5
+Habilidad=Simple
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Setup (Maldición) | Maldición | Doble Filo | Acua Cola | Fuerza Bruta
+Set2=Choice / 4 ataques | Doble Filo | Acua Cola | Fuerza Bruta | Triturar
+Objetos=Cinta Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Thynatch | Linkidra | Arnero
+Debilidades=Eléctrico x2, Planta x2, Lucha x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Tiene prioridad con Aqua Jet para rematar.
+Nota=Inmune a Fantasma.
+
+[024]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Furnor (al nivel 16). Su forma final es Arnero. No conviene usarlo en competitivo hasta evolucionar.
+
+[025]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Arnero (al nivel 32). No conviene usarlo en competitivo hasta evolucionar.
+
+[026]
+Rol=Tanque ofensivo físico
+Puntuacion=3.5
+Habilidad=Experto
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Taladradora | Pájaro Osado | Ala de Acero | Finta
+Set2=Resistente con recuperación | Respiro | Taladradora | Pájaro Osado | Despejar
+Objetos=Cinta Elección | Pañuelo Elección | Restos
+Compañeros=Austreel | Lucifall | Esterpent
+Debilidades=Hielo x4, Agua x2
+Nota=Cuidado con Hielo (daño x4).
+Nota=Tiene prioridad con Tierra rapida para rematar.
+Nota=Inmune a Eléctrico, Tierra.
+
+[027]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Bagrinder (al nivel 26). No conviene usarlo en competitivo hasta evolucionar.
+
+[028]
+Rol=Wallbreaker físico (lento)
+Puntuacion=2.5
+Habilidad=Intimidación
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Hidroariete | Triturar | Colmillo Hielo | Doble Filo
+Objetos=Cinta Elección | Vidasfera | Cinta Experto
+Compañeros=Esterpent | Delazard | Hearbuncle
+Debilidades=Eléctrico x2, Planta x2, Lucha x2, Bicho x2, Hada x2
+Nota=Tiene prioridad con Aqua Jet para rematar.
+Nota=Inmune a Psíquico.
+
+[029]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Witherlug (al nivel 32). No conviene usarlo en competitivo hasta evolucionar.
+
+[030]
+Rol=Wallbreaker especial (lento)
+Puntuacion=2
+Habilidad=Corrosión
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Onda Tóxica | Poder Pasado | Bola Sombra | Estoicismo
+Set2=Ofensivo con utilidad | Onda Tóxica | Poder Pasado | Bola Sombra | Rugido
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Vermithief | Maliya | Nortalcon
+Debilidades=Tierra x2, Psíquico x2
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+
+[031]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Yaguattoo (al nivel 26). No conviene usarlo en competitivo hasta evolucionar.
+
+[032]
+Rol=Sweeper físico
+Puntuacion=3.5
+Habilidad=Intimidación
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Terremoto | Golpe Bajo | Tumba Rocas | Retribución
+Set2=Ofensivo con utilidad | Terremoto | Golpe Bajo | Tumba Rocas | Rugido
+Objetos=Cinta Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Esterpent | Anoxium | Hearbuncle
+Debilidades=Agua x2, Planta x2, Hielo x2, Lucha x2, Bicho x2, Hada x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Tiene prioridad con Golpe Bajo para rematar.
+Nota=Inmune a Eléctrico, Psíquico.
+
+[033]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Speartan (al nivel 28). No conviene usarlo en competitivo hasta evolucionar.
+
+[034]
+Rol=Wallbreaker físico (lento)
+Puntuacion=2.5
+Habilidad=Armadura Batalla
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | A Bocajarro | Cuerno Certero | Terratemblor | Tajo Umbrío
+Set2=Ofensivo con utilidad | A Bocajarro | Cuerno Certero | Terratemblor | Remolino
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Nortalcon | Sigmadeep | Magaiant
+Debilidades=Fuego x2, Lucha x2, Tierra x2
+Nota=Inmune a Veneno.
+
+[035]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Arbosfer (usando Piedra Hoja). Su forma final es Fronado. No conviene usarlo en competitivo hasta evolucionar.
+
+[036]
+Rol=Usable con Mineral Evolutivo · Muro físico / Soporte
+Puntuacion=1.5
+Habilidad=Agallas
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Asta Drenaje | Somnífero | Carantoña | Drenadoras
+Set2=4 ataques (Chaleco Asalto / Choice) | Asta Drenaje | Carantoña | Mordisco | Retribución
+Objetos=Mineral Evolutivo | Restos | Casco Dentado
+Compañeros=Austreel | Esterpent | Gyganovolt
+Debilidades=Veneno x4, Fuego x2, Hielo x2, Volador x2, Acero x2
+Nota=Con Mineral Evolutivo su Defensa y Defensa Especial suben x1.5: aguanta muchísimo para ser una preevolución.
+Nota=Evoluciona a Fronado (al nivel 40). Evolucionado suele rendir más.
+Nota=Cuidado con Veneno (daño x4).
+Nota=Inmune a Dragón.
+
+[037]
+Rol=Tanque ofensivo físico
+Puntuacion=3
+Habilidad=Agallas
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Asta Drenaje | Carantoña | Tumba Rocas | Mordisco
+Set2=Ofensivo con utilidad | Asta Drenaje | Carantoña | Tumba Rocas | Drenadoras
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Austreel | Esterpent | Gyganovolt
+Debilidades=Veneno x4, Fuego x2, Hielo x2, Volador x2, Acero x2
+Nota=Cuidado con Veneno (daño x4).
+Nota=Inmune a Dragón.
+
+[038]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Democworm (al nivel 30). Su forma final es Sigmadeep. No conviene usarlo en competitivo hasta evolucionar.
+
+[039]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Sigmadeep (usando Roca del Rey). No conviene usarlo en competitivo hasta evolucionar.
+
+[040]
+Rol=Sweeper físico
+Puntuacion=3
+Habilidad=Subpropulsión
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Enfado | Terremoto | Tumba Rocas | Golpe Bajo
+Objetos=Cinta Elección | Vidasfera | Cinta Experto
+Compañeros=Hearbuncle | Flamaire | Anoxium
+Debilidades=Hielo x2, Bicho x2, Fantasma x2, Dragón x2, Siniestro x2, Hada x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Tiene prioridad con Golpe Bajo para rematar.
+
+[041]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Bishnatrix (usando Vinilo Viejo). No conviene usarlo en competitivo hasta evolucionar.
+
+[042]
+Rol=Soporte / Utilidad
+Puntuacion=2
+Habilidad=Electromotor
+Naturaleza=Osada (+Def, -Atq)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Vendaval | Respiro | Onda Trueno | Chispazo
+Set2=4 ataques (Chaleco Asalto / Choice) | Vendaval | Chispazo | Bola Sombra | Alarido
+Objetos=Restos | Casco Dentado | Botas Gruesas
+Compañeros=Austreel | Esmaguin | Guleye
+Debilidades=Hielo x2, Roca x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Inmune a Tierra.
+
+[043]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Maliya (al nivel 40). No conviene usarlo en competitivo hasta evolucionar.
+
+[044]
+Rol=Sweeper especial
+Puntuacion=4.5
+Habilidad=Escama Especial
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Zumbido | Psíquico | Absorber | Bola Sombra
+Set2=Resistente con recuperación | Sol Matinal | Zumbido | Psíquico | Red Viscosa
+Objetos=Gafas Elección | Pañuelo Elección | Chaleco Asalto
+Compañeros=Chivane | Pyxcrosita | Primarina
+Debilidades=Fuego x2, Volador x2, Bicho x2, Roca x2, Fantasma x2, Siniestro x2
+
+[045]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Vúdragon (con amistad alta). No conviene usarlo en competitivo hasta evolucionar.
+
+[046]
+Rol=Tanque ofensivo físico
+Puntuacion=2.5
+Habilidad=Espejo Mágico
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Garra Dragón | Sombra Vil | Terratemblor | Tumba Rocas
+Set2=Ofensivo con utilidad | Garra Dragón | Sombra Vil | Terratemblor | Divide Dolor
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Hearbuncle | Flamaire | Vilnina
+Debilidades=Hielo x2, Fantasma x2, Dragón x2, Siniestro x2, Hada x2
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+Nota=Tiene prioridad con Golpe Bajo para rematar.
+Nota=Inmune a Normal, Lucha.
+
+[047]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Tuguartus (al nivel 28). No conviene usarlo en competitivo hasta evolucionar.
+
+[048]
+Rol=Tanque ofensivo físico
+Puntuacion=2.5
+Habilidad=Encadenado
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Setup (Maldición) | Maldición | Bomba Germen | Garra Metal | Terratemblor
+Set2=Choice / 4 ataques | Bomba Germen | Garra Metal | Terratemblor | Patada Baja
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Esterpent | Jacartina | Anoxium
+Debilidades=Fuego x4, Lucha x2
+Nota=Cuidado con Fuego (daño x4).
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+Nota=Inmune a Veneno.
+
+[049]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Canspider (con amistad alta). No conviene usarlo en competitivo hasta evolucionar.
+
+[050]
+Rol=Atacante mixto
+Puntuacion=2
+Habilidad=Intimidación
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Retribución | Desahogo | Tumba Rocas | Chupavidas
+Set2=Resistente con recuperación | Deseo | Retribución | Desahogo | Mofa
+Objetos=Cinta Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Esterpent | Senbaled | Magaiant
+Debilidades=Lucha x4, Bicho x2, Hada x2
+Nota=Cuidado con Lucha (daño x4).
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Tiene prioridad con Golpe Bajo para rematar.
+Nota=Inmune a Psíquico, Fantasma.
+
+[051]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Kutraupi (al nivel 25). No conviene usarlo en competitivo hasta evolucionar.
+
+[052]
+Rol=Tanque especial
+Puntuacion=2.5
+Habilidad=Tenacidad
+Naturaleza=Cauta (+Def.Esp, -At.Esp)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Defensivo | Terratemblor | Púas | Mofa | Tumba Rocas
+Set2=4 ataques (Chaleco Asalto / Choice) | Terratemblor | Tumba Rocas | Mordisco | Retribución
+Objetos=Lodo Negro | Chaleco Asalto | Botas Gruesas
+Compañeros=Vilnina | Maliya | Guacaraw
+Debilidades=Agua x2, Hielo x2, Tierra x2, Psíquico x2
+Nota=Inmune a Eléctrico.
+
+[053]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Tanghion (al nivel 18). No conviene usarlo en competitivo hasta evolucionar.
+
+[054]
+Rol=Soporte / Utilidad
+Puntuacion=3
+Habilidad=Pareja de Baile
+Naturaleza=Osada (+Def, -Atq)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Bola Sombra | Fuego Fatuo | Beso Drenaje | Divide Dolor
+Set2=Setup (Danza Aleteo) | Danza Aleteo | Bola Sombra | Beso Drenaje | Poder Pasado
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Flamaire | Plussgop | Austreel
+Debilidades=Fantasma x2, Acero x2
+Nota=Inmune a Normal, Lucha, Dragón.
+
+[055]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Flamaire (al nivel 25). No conviene usarlo en competitivo hasta evolucionar.
+
+[056]
+Rol=Tanque físico
+Puntuacion=4.5
+Habilidad=Pelaje Recio
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Retribución | Relajo | Sustituto | Envite Ígneo
+Set2=4 ataques (Chaleco Asalto / Choice) | Retribución | Envite Ígneo | Terratemblor | Doble Patada
+Objetos=Restos | Casco Dentado | Botas Gruesas
+Compañeros=Thynatch | Sigmadeep | Auriel
+Debilidades=Agua x2, Lucha x2, Tierra x2, Roca x2
+Nota=Inmune a Fantasma.
+
+[057]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Bugandds (al nivel 15). Su forma final es Bugedion. No conviene usarlo en competitivo hasta evolucionar.
+
+[058]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Bugedion (al nivel 30). No conviene usarlo en competitivo hasta evolucionar.
+
+[059]
+Rol=Soporte rápido / Pivot
+Puntuacion=2.5
+Habilidad=Toque Tóxico
+Naturaleza=Serena (+Def.Esp, -Atq)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Defensivo | Rayo Señal | Tóxico | Púas Tóxicas | Bomba Ácida
+Set2=Pivot / Utilidad | Ida y Vuelta | Púas Tóxicas | Tóxico | Rayo Señal
+Objetos=Lodo Negro | Chaleco Asalto | Botas Gruesas
+Compañeros=Guleye | Austreel | Sigmadeep
+Debilidades=Fuego x2, Volador x2, Psíquico x2, Roca x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+
+[060]
+Rol=Muro especial / Soporte
+Puntuacion=4.5
+Habilidad=Levitación
+Naturaleza=Serena (+Def.Esp, -Atq)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Defensivo | Plantarasito | Fotosíntesis | Onda Trueno | Chispazo
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Hefatsyro | Surana | Petrotaur
+Debilidades=Fuego x2, Hielo x2, Veneno x2, Bicho x2
+
+[061]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Smashean (al nivel 28). No conviene usarlo en competitivo hasta evolucionar.
+
+[062]
+Rol=Sweeper físico
+Puntuacion=3
+Habilidad=Alma Villera
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Setup (Corpulencia) | Corpulencia | A Bocajarro | Puño Hielo | Terratemblor
+Set2=Choice / 4 ataques | A Bocajarro | Puño Hielo | Terratemblor | Desarme
+Objetos=Vidasfera | Baya Ziuela | Banda Aguante
+Compañeros=Argpos | Plussgop | Esterpent
+Debilidades=Volador x2, Psíquico x2, Hada x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Tiene prioridad con Puño Bala para rematar.
+
+[063]
+Rol=Soporte / Utilidad
+Puntuacion=1
+Habilidad=Pies Rápidos
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Doble Filo | Trampa Rocas | Roca Afilada | Terratemblor
+Set2=4 ataques (Chaleco Asalto / Choice) | Doble Filo | Roca Afilada | Terratemblor | Golpe Bajo
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Thynatch | Glatherix | Maliya
+Debilidades=Lucha x4, Agua x2, Planta x2, Tierra x2, Acero x2
+Nota=Cuidado con Lucha (daño x4).
+Nota=Inmune a Fantasma.
+
+[064]
+Rol=Soporte / Utilidad
+Puntuacion=1
+Habilidad=Tormento
+Naturaleza=Serena (+Def.Esp, -Atq)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Tanque atacante | Hidrobomba | Divide Dolor | Bola Sombra | Pulso Umbrío
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Vermithief | Jacartina | Flamaire
+Debilidades=Eléctrico x2, Planta x2, Fantasma x2, Siniestro x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Inmune a Normal, Lucha.
+
+[065]
+Rol=Soporte / Utilidad
+Puntuacion=1.5
+Habilidad=Rompemoldes
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Sísmico | Giro Rápido | Ataque Ala | Tumba Rocas
+Set2=Utilidad | Sísmico | Ataque Ala | Tumba Rocas | Doble Filo
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Esterpent | Toxtricity | Austreel
+Debilidades=Fuego x2, Lucha x2, Volador x2, Psíquico x2, Acero x2, Hada x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+
+[066]
+Rol=Soporte / Utilidad
+Puntuacion=1.5
+Habilidad=Elec. Estática
+Naturaleza=Serena (+Def.Esp, -Atq)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Defensivo | Chispazo | Deseo | Onda Trueno | Alarido
+Set2=Setup (Maquinación) | Maquinación | Chispazo | Alarido | Meteoros
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Nortalcon | Magaiant | Fronado
+Debilidades=Tierra x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+
+[067]
+Rol=Glass cannon físico
+Puntuacion=4.5
+Habilidad=Sebo
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Setup (Afilagarras) | Afilagarras | Colmillo Hielo | Demolición | Terratemblor
+Set2=Choice / 4 ataques | Colmillo Hielo | Demolición | Terratemblor | Mordisco
+Objetos=Vidasfera | Baya Ziuela | Banda Aguante
+Compañeros=Surana | Gezonda | Sigmadeep
+Debilidades=Fuego x2, Lucha x2, Roca x2, Acero x2
+Nota=Tiene prioridad con Veloc. Extrema para rematar.
+
+[068]
+Rol=Tanque ofensivo especial
+Puntuacion=3
+Habilidad=Escama Especial
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Setup (Desarrollo) | Desarrollo | Cometa Draco | Beso Drenaje | Lluevehojas
+Set2=Resistente con recuperación | Fotosíntesis | Cometa Draco | Beso Drenaje | Drenadoras
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Hefatsyro | Anoxium | Plasgor
+Debilidades=Hielo x2, Veneno x2, Acero x2, Hada x2
+Nota=Inmune a Dragón.
+
+[069]
+Rol=Tanque físico
+Puntuacion=2
+Habilidad=Robustez
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Testarazo | Bostezo | Viraje | Terratemblor
+Set2=4 ataques (Chaleco Asalto / Choice) | Testarazo | Viraje | Terratemblor | Mordisco
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Thynatch | Linkidra | Arnero
+Debilidades=Planta x4, Eléctrico x2, Lucha x2, Tierra x2
+Nota=Cuidado con Planta (daño x4).
+
+[070]
+Rol=Muro físico / Soporte
+Puntuacion=2.5
+Habilidad=Pompa
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Acua Cola | Recuperación | Retribución | Hidrobomba
+Objetos=Restos | Casco Dentado | Botas Gruesas
+Compañeros=Fronado | Gezonda | Frozelcius
+Debilidades=Eléctrico x2, Planta x2
+
+[071]
+Rol=Tanque físico
+Puntuacion=3
+Habilidad=Cuerpo Llama
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Roca Afilada | Sol Matinal | Fuego Fatuo | Trampa Rocas
+Set2=4 ataques (Chaleco Asalto / Choice) | Roca Afilada | A Bocajarro | Triturar | Envite Ígneo
+Objetos=Restos | Casco Dentado | Botas Gruesas
+Compañeros=Guacaraw | Linkidra | Surana
+Debilidades=Agua x2, Planta x2, Lucha x2, Tierra x2, Acero x2
+
+[072]
+Rol=Atacante especial
+Puntuacion=2
+Habilidad=Robustez
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Ofensivo con utilidad | Poder Pasado | Bola Sombra | Tornado | Testarazo
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Vermithief | Bishnatrix | Linkidra
+Debilidades=Agua x2, Planta x2, Tierra x2, Fantasma x2, Siniestro x2, Acero x2
+Nota=Inmune a Normal, Lucha.
+
+[073]
+Rol=Sweeper físico
+Puntuacion=2
+Habilidad=Indefenso
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Llave Vital | Cabezazo Zen | Mazazo | Envite Ígneo
+Set2=Ofensivo con utilidad | Llave Vital | Cabezazo Zen | Mazazo | Giro Rápido
+Objetos=Cinta Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Chivane | Thundoatix | Petrotaur
+Debilidades=Volador x2, Fantasma x2, Hada x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Tiene prioridad con Golpe Bajo para rematar.
+
+[074]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Yacantal (usando Revestim. Metálico). No conviene usarlo en competitivo hasta evolucionar.
+
+[075]
+Rol=Tanque ofensivo físico
+Puntuacion=3
+Habilidad=Mandíbula Fuerte
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Setup (Maldición) | Maldición | Cabeza de Hierro | Fuerza Bruta | Terratemblor
+Set2=Choice / 4 ataques | Cabeza de Hierro | Fuerza Bruta | Terratemblor | Triturar
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Nortalcon | Linkidra | Fronado
+Debilidades=Fuego x2, Lucha x2, Tierra x2
+Nota=Tiene prioridad con Aqua Jet para rematar.
+Nota=Inmune a Veneno.
+
+[076]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Tropipo (al nivel 23). Su forma final es Palocau. No conviene usarlo en competitivo hasta evolucionar.
+
+[077]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Palocau (usando Piedra Hoja). No conviene usarlo en competitivo hasta evolucionar.
+
+[078]
+Rol=Tanque ofensivo especial
+Puntuacion=2.5
+Habilidad=Piel Tosca
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Gigadrenado | Onda Tóxica | Bola Sombra | Hidrobomba
+Set2=Resistente con recuperación | Fotosíntesis | Gigadrenado | Onda Tóxica | Otra Vez
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Guleye | Austreel | Thundoatix
+Debilidades=Fuego x2, Hielo x2, Volador x2, Psíquico x2
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+
+[079]
+Rol=Tanque especial
+Puntuacion=1.5
+Habilidad=Veleta
+Naturaleza=Cauta (+Def.Esp, -At.Esp)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Tanque atacante | Doble Filo | Viento Afín | Ala de Acero | Pico Taladro
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Nortalcon | Linkidra | Fronado
+Debilidades=Lucha x4, Fuego x2, Tierra x2
+Nota=Cuidado con Lucha (daño x4).
+Nota=Inmune a Veneno, Fantasma.
+
+[080]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Plasgor (con amistad alta de día) o Plussgop (con amistad alta de noche). No conviene usarlo en competitivo hasta evolucionar.
+
+[081]
+Rol=Tanque especial
+Puntuacion=4.5
+Habilidad=Intimidación
+Naturaleza=Cauta (+Def.Esp, -At.Esp)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Defensivo | Voltio Cruel | Onda Trueno | Sombra Vil | Giro Rápido
+Set2=4 ataques (Chaleco Asalto / Choice) | Voltio Cruel | Sombra Vil | Retribución | Mordisco
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Vermithief | Auriel | Hydroxy
+Debilidades=Tierra x2, Fantasma x2, Siniestro x2
+Nota=Inmune a Normal, Lucha.
+
+[082]
+Rol=Tanque especial
+Puntuacion=4
+Habilidad=Armadura Frágil
+Naturaleza=Serena (+Def.Esp, -Atq)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Defensivo | Voltiocambio | Onda Trueno | Pulso Umbrío | Giro Rápido
+Set2=Pivot / Utilidad | Voltiocambio | Onda Trueno | Pulso Umbrío | Bola Sombra
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Nortalcon | Bugedion | Fronado
+Debilidades=Lucha x2, Tierra x2, Bicho x2, Hada x2
+Nota=Inmune a Psíquico.
+
+[083]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Spinamay (con amistad alta). No conviene usarlo en competitivo hasta evolucionar.
+
+[084]
+Rol=Tanque ofensivo físico
+Puntuacion=2.5
+Habilidad=Intimidación
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Setup (Afilagarras) | Afilagarras | Pin Misil | Desarme | Cola Férrea
+Set2=Choice / 4 ataques | Pin Misil | Desarme | Cola Férrea | Retribución
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Petrotaur | Austreel | Esterpent
+Debilidades=Fuego x2, Volador x2, Bicho x2, Roca x2, Hada x2
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+Nota=Inmune a Psíquico.
+
+[085]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Guacaraw (usando Piedra Día). No conviene usarlo en competitivo hasta evolucionar.
+
+[086]
+Rol=Atacante especial
+Puntuacion=3
+Habilidad=Clorofila
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Setup (Maquinación) | Maquinación | Lluevehojas | Alarido | Residuos
+Set2=Resistente con recuperación | Fotosíntesis | Lluevehojas | Alarido | Drenadoras
+Objetos=Vidasfera | Baya Ziuela | Banda Aguante
+Compañeros=Austreel | Gyganovolt | Esterpent
+Debilidades=Hielo x4, Fuego x2, Veneno x2, Volador x2, Roca x2
+Nota=Cuidado con Hielo (daño x4).
+Nota=Inmune a Tierra.
+
+[087]
+Rol=Tanque ofensivo especial
+Puntuacion=2
+Habilidad=Sombratrampa
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Setup (Desarrollo) | Desarrollo | Pulso Noche | Bola Sombra | Fuego Fatuo
+Set2=Ofensivo con utilidad | Pulso Noche | Bola Sombra | Drenadoras | Fuego Fatuo
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Viskyall | Hefatsyro | Magaiant
+Debilidades=Hada x2
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+Nota=Inmune a Normal, Lucha, Psíquico.
+
+[088]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Pyxcrosita (usando Piedra Agua). No conviene usarlo en competitivo hasta evolucionar.
+
+[089]
+Rol=Tanque físico
+Puntuacion=2
+Habilidad=Levitación
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Testarazo | Trampa Rocas | Carantoña | Terratemblor
+Set2=4 ataques (Chaleco Asalto / Choice) | Testarazo | Carantoña | Terratemblor | Ladrón
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Guacaraw | Linkidra | Argpos
+Debilidades=Acero x4, Agua x2, Planta x2, Tierra x2
+Nota=Cuidado con Acero (daño x4).
+Nota=Inmune a Dragón.
+
+[090]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Jasilex (usando Piedra Hoja). No conviene usarlo en competitivo hasta evolucionar.
+
+[091]
+Rol=Tanque ofensivo físico
+Puntuacion=1.5
+Habilidad=Colector
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Hoja Afilada | Golpe Kárate | Tumba Rocas | Terratemblor
+Set2=Resistente con recuperación | Fotosíntesis | Hoja Afilada | Golpe Kárate | Giro Rápido
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Hefatsyro | FosilAgua2 | Plasgor
+Debilidades=Volador x4, Fuego x2, Hielo x2, Veneno x2, Psíquico x2, Hada x2
+Nota=Cuidado con Volador (daño x4).
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+
+[092]
+Rol=Soporte rápido / Pivot
+Puntuacion=1
+Habilidad=Insonorizar
+Naturaleza=Cauta (+Def.Esp, -At.Esp)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Tanque atacante | Golpe Aéreo | Otra Vez | Retribución | Tajo Aéreo
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Cervimoor | Speartan | Plussgop
+Debilidades=Eléctrico x2, Hielo x2, Roca x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Inmune a Tierra.
+
+[093]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Seerpot (al nivel 16). Su forma final es Diajaryi. No conviene usarlo en competitivo hasta evolucionar.
+
+[094]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Diajaryi (usando Piedra Lunar). No conviene usarlo en competitivo hasta evolucionar.
+
+[095]
+Rol=Tanque ofensivo especial
+Puntuacion=2
+Habilidad=Enjambre
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Setup (Danza Aleteo) | Danza Aleteo | Zumbido | Paranormal | Bola Sombra
+Set2=Resistente con recuperación | Luz Lunar | Zumbido | Paranormal | Protección
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Chivane | Pyxcrosita | Primarina
+Debilidades=Fuego x2, Volador x2, Bicho x2, Roca x2, Fantasma x2, Siniestro x2
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+
+[096]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Ceile (al nivel 14). Su forma final es Danceigo. No conviene usarlo en competitivo hasta evolucionar.
+
+[097]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Danceigo (usando Piedra Fuego). No conviene usarlo en competitivo hasta evolucionar.
+
+[098]
+Rol=Atacante físico
+Puntuacion=4
+Habilidad=Pareja de Baile
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Latigazo | Envite Ígneo | Pin Misil | Retribución
+Set2=Resistente con recuperación | Fotosíntesis | Latigazo | Envite Ígneo | Somnífero
+Objetos=Cinta Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Hearbuncle | Oesuri | Guleye
+Debilidades=Veneno x2, Volador x2, Roca x2
+Nota=Tiene prioridad con Paso Flamigero para rematar.
+
+[099]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Saldescuart (subiendo de nivel con Rueda Espectral). No conviene usarlo en competitivo hasta evolucionar.
+
+[100]
+Rol=Wallbreaker físico (lento)
+Puntuacion=3.5
+Habilidad=Cuerpo Maldito
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Retribución | Rueda Espectral | Fuerza Bruta | Terratemblor
+Set2=Ofensivo con utilidad | Retribución | Rueda Espectral | Fuerza Bruta | Bostezo
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Vermithief | Facturito | Magaiant
+Debilidades=Siniestro x2
+Nota=Inmune a Normal, Lucha, Fantasma.
+
+[101]
+Rol=Tanque ofensivo físico
+Puntuacion=1.5
+Habilidad=Pareja de Baile
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Ofensivo con utilidad | Acróbata | Impresionar | Retribución | Tajo Aéreo
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Cervimoor | Speartan | Plussgop
+Debilidades=Eléctrico x2, Hielo x2, Roca x2
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+Nota=Inmune a Tierra.
+
+[102]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Indomiteed (al nivel 51). No conviene usarlo en competitivo hasta evolucionar.
+
+[103]
+Rol=Sweeper físico
+Puntuacion=5
+Habilidad=Impulso
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Setup (Corpulencia) | Corpulencia | Fuerza Bruta | Testarazo | Fuerza Equina
+Set2=Choice / 4 ataques | Fuerza Bruta | Testarazo | Fuerza Equina | Mordisco
+Objetos=Vidasfera | Baya Ziuela | Seguro Debilidad
+Compañeros=Argpos | Plussgop | Esterpent
+Debilidades=Volador x2, Psíquico x2, Hada x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Tiene prioridad con Venganza para rematar.
+
+[104]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Linkoon (al nivel 28). Su forma final es Linkidra. No conviene usarlo en competitivo hasta evolucionar.
+
+[105]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Linkidra (usando Piedra Hielo). No conviene usarlo en competitivo hasta evolucionar.
+
+[106]
+Rol=Sweeper especial
+Puntuacion=3.5
+Habilidad=Levitación
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Zumbido | Hidropulso | Nieve Polvo | Cola Dragón
+Set2=Líder (hazards) | Red Viscosa | Zumbido | Hidropulso | Nieve Polvo
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Hearbuncle | FosilAgua2 | Thundoatix
+Debilidades=Hielo x2, Volador x2, Roca x2, Dragón x2, Hada x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+
+[107]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Ultimaston (al nivel 30). No conviene usarlo en competitivo hasta evolucionar.
+
+[108]
+Rol=Glass cannon físico
+Puntuacion=4.5
+Habilidad=Rompemoldes
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Setup (Danza Espada) | Danza Espada | Hidroariete | Tumba Rocas | Doble Filo
+Set2=Ofensivo con utilidad | Hidroariete | Tumba Rocas | Doble Filo | Red Viscosa
+Objetos=Vidasfera | Baya Ziuela | Seguro Debilidad
+Compañeros=Fronado | Gezonda | Frozelcius
+Debilidades=Eléctrico x2, Planta x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Tiene prioridad con Aqua Jet para rematar.
+
+[109]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Zapyceros (al nivel 28). No conviene usarlo en competitivo hasta evolucionar.
+
+[110]
+Rol=Sweeper físico
+Puntuacion=4
+Habilidad=Intimidación
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Plancha Voltaica | Doble Patada | Mordisco | Tumba Rocas
+Set2=Ofensivo con utilidad | Plancha Voltaica | Doble Patada | Mordisco | Onda Trueno
+Objetos=Cinta Elección | Vidasfera | Cinta Experto
+Compañeros=Nortalcon | Magaiant | Fronado
+Debilidades=Tierra x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Tiene prioridad con Ataque Rápido para rematar.
+
+[111]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Evigician (al nivel 30). No conviene usarlo en competitivo hasta evolucionar.
+
+[112]
+Rol=Atacante especial
+Puntuacion=3.5
+Habilidad=Levitación
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Setup (Maquinación) | Maquinación | Psíquico | Pulso Umbrío | Hidropulso
+Set2=Choice / 4 ataques | Psíquico | Pulso Umbrío | Hidropulso | Bola Sombra
+Objetos=Gafas Elección | Pañuelo Elección | Chaleco Asalto
+Compañeros=Viskyall | Hefatsyro | Eviring
+Debilidades=Bicho x4, Hada x2
+Nota=Cuidado con Bicho (daño x4).
+Nota=Inmune a Psíquico.
+
+[113]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Shukeridae (al nivel 24). No conviene usarlo en competitivo hasta evolucionar.
+
+[114]
+Rol=Glass cannon especial
+Puntuacion=1.5
+Habilidad=Veleta
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Hidrobomba | Acua Cola | Mordisco | Doble Filo
+Objetos=Gafas Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Fronado | Gezonda | Frozelcius
+Debilidades=Eléctrico x2, Planta x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+
+[115]
+Rol=Atacante especial
+Puntuacion=1.5
+Habilidad=Elec. Estática
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Chispazo | Tierra Viva | Alarido | Meteoros
+Set2=Ofensivo con utilidad | Chispazo | Tierra Viva | Alarido | Moflete Estático
+Objetos=Gafas Elección | Vidasfera | Cinta Experto
+Compañeros=Guacaraw | Magaiant | Frozelcius
+Debilidades=Agua x2, Planta x2, Hielo x2, Tierra x2
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+Nota=Inmune a Eléctrico.
+
+[116]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Auriel (al nivel 24) o Lucifall (subiendo de nivel con Garra Brutal). No conviene usarlo en competitivo hasta evolucionar.
+
+[117]
+Rol=Tanque especial
+Puntuacion=2.5
+Habilidad=Antídoto
+Naturaleza=Cauta (+Def.Esp, -At.Esp)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Defensivo | Ataque Ala | Sol Matinal | Cascabel Cura | Retribución
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Argpos | Cervimoor | Plasgor
+Debilidades=Eléctrico x2, Hielo x2, Veneno x2, Roca x2, Acero x2
+Nota=Inmune a Tierra, Dragón.
+
+[118]
+Rol=Atacante físico
+Puntuacion=2
+Habilidad=Respondón
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Carámbano | Juego Sucio | Tumba Rocas | Retribución
+Set2=Resistente con recuperación | Sol Matinal | Carámbano | Juego Sucio | Mofa
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Esterpent | Anoxium | Argpos
+Debilidades=Lucha x4, Fuego x2, Bicho x2, Roca x2, Acero x2, Hada x2
+Nota=Cuidado con Lucha (daño x4).
+Nota=Inmune a Psíquico.
+
+[119]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Ursicus (al nivel 30). No conviene usarlo en competitivo hasta evolucionar.
+
+[120]
+Rol=Tanque físico
+Puntuacion=4.5
+Habilidad=Dicha
+Naturaleza=Osada (+Def, -Atq)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Fuerza Lunar | Deseo | Bostezo | Alarido
+Objetos=Restos | Casco Dentado | Botas Gruesas
+Compañeros=Argpos | Esterpent | Anoxium
+Debilidades=Veneno x2, Acero x2
+Nota=Inmune a Fantasma, Dragón.
+
+[121]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Punix (con cierto Pokémon en el equipo). No conviene usarlo en competitivo hasta evolucionar.
+
+[122]
+Rol=Glass cannon especial
+Puntuacion=1.5
+Habilidad=Armadura Frágil
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Nieve Polvo | Retribución
+Objetos=Gafas Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Austreel | Gezonda | Vúdragon
+Debilidades=Acero x4, Fuego x2, Veneno x2, Roca x2
+Nota=Cuidado con Acero (daño x4).
+Nota=Inmune a Dragón.
+
+[123]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Pimébuc (usando Piedra Agua). Su forma final es Sancorvo. No conviene usarlo en competitivo hasta evolucionar.
+
+[124]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Sancorvo (al nivel 38). No conviene usarlo en competitivo hasta evolucionar.
+
+[125]
+Rol=Glass cannon físico
+Puntuacion=4.5
+Habilidad=Agallas
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Setup (Danza Espada) | Danza Espada | Tajo Acuático | Espada Santa | Picotazo
+Set2=Choice / 4 ataques | Tajo Acuático | Espada Santa | Picotazo | Terratemblor
+Objetos=Vidasfera | Baya Ziuela | Banda Aguante
+Compañeros=Argpos | Thundoatix | Vermithief
+Debilidades=Eléctrico x2, Planta x2, Volador x2, Psíquico x2, Hada x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Tiene prioridad con Aqua Jet para rematar.
+
+[126]
+Rol=Soporte / Utilidad
+Puntuacion=1
+Habilidad=Estirpe Salvaje
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Mordisco | Terratemblor | Tumba Rocas | Retribución
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Esterpent | Viskyall | Hearbuncle
+Debilidades=Lucha x2, Bicho x2, Hada x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Inmune a Psíquico.
+
+[127]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Eltarite (al nivel 40). No conviene usarlo en competitivo hasta evolucionar.
+
+[128]
+Rol=Soporte / Utilidad
+Puntuacion=1.5
+Habilidad=Impulso
+Naturaleza=Osada (+Def, -Atq)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Disparo Espejo | Pulso Dragón | Danza Dragón | Cabeza de Hierro
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Nortalcon | Maliya | Fronado
+Debilidades=Lucha x2, Tierra x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Inmune a Veneno.
+
+[129]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Basiscale (con cierto Pokémon en el equipo). No conviene usarlo en competitivo hasta evolucionar.
+
+[130]
+Rol=Tanque físico
+Puntuacion=2.5
+Habilidad=Roca Solida
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Avalancha | Cola Dragón | Terratemblor | Mordisco
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Surana | Flalhume | Argpos
+Debilidades=Hielo x2, Lucha x2, Tierra x2, Dragón x2, Acero x2, Hada x2
+
+[131]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Glatherix (con cierto Pokémon en el equipo). No conviene usarlo en competitivo hasta evolucionar.
+
+[132]
+Rol=Tanque ofensivo especial
+Puntuacion=1.5
+Habilidad=Caparazón
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Ofensivo con utilidad | Bola Sombra | Alarido | Tumba Rocas | Mordisco
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Yaguattoo | Argpos | Gyganovolt
+Debilidades=Eléctrico x2, Hielo x2, Psíquico x2, Roca x2
+Nota=Inmune a Tierra.
+
+[133]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Senbathief (al nivel 30) o Senbaled (con amistad alta). No conviene usarlo en competitivo hasta evolucionar.
+
+[134]
+Rol=Sweeper mixto
+Puntuacion=3
+Habilidad=Ignorante
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Residuos | Bola Sombra | Tajo Aéreo | Absorber
+Set2=Ofensivo con utilidad | Residuos | Bola Sombra | Tajo Aéreo | Remolino
+Objetos=Gafas Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Vermithief | Ursicus | Arnero
+Debilidades=Tierra x2, Fantasma x2, Siniestro x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+
+[135]
+Rol=Muro especial / Soporte
+Puntuacion=3.5
+Habilidad=Ignorante
+Naturaleza=Cauta (+Def.Esp, -At.Esp)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Tanque atacante | Carambola | Remolino | Mordisco | Ataque Ala
+Set2=Utilidad | Carambola | Mordisco | Ataque Ala | Chupavidas
+Objetos=Lodo Negro | Chaleco Asalto | Botas Gruesas
+Compañeros=Vilnina | Maliya | Bishnatrix
+Debilidades=Tierra x2, Psíquico x2, Acero x2
+Nota=Inmune a Dragón.
+
+[136]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Gyganovolt (al nivel 40). No conviene usarlo en competitivo hasta evolucionar.
+
+[137]
+Rol=Wallbreaker físico (lento)
+Puntuacion=2
+Habilidad=Mandíbula Fuerte
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Tumba Rocas | Terratemblor | Mordisco | Retribución
+Objetos=Cinta Elección | Vidasfera | Cinta Experto
+Compañeros=Guacaraw | Linkidra | Surana
+Debilidades=Tierra x4, Agua x2, Planta x2, Lucha x2
+Nota=Cuidado con Tierra (daño x4).
+
+[138]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Gyganovolt (al nivel 40). No conviene usarlo en competitivo hasta evolucionar.
+
+[139]
+Rol=Wallbreaker físico (lento)
+Puntuacion=1
+Habilidad=Mandíbula Fuerte
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Ofensivo con utilidad | Placaje
+Objetos=Cinta Elección | Vidasfera | Cinta Experto
+Compañeros=Thynatch | Linkidra | Arnero
+Debilidades=Planta x4, Eléctrico x2, Lucha x2, Tierra x2
+Nota=Cuidado con Planta (daño x4).
+
+[140]
+Rol=Wallbreaker físico (lento)
+Puntuacion=1.5
+Habilidad=Ignífugo
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Tumba Rocas | Terratemblor | Mordisco | Retribución
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Vermithief | Bishnatrix | Maliya
+Debilidades=Tierra x4, Agua x2, Psíquico x2, Acero x2
+Nota=Cuidado con Tierra (daño x4).
+
+[141]
+Rol=Tanque físico
+Puntuacion=2.5
+Habilidad=Metal Pesado
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Terratemblor | Megacuerno | Tumba Rocas | Retribución
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Nortalcon | Linkidra | Fronado
+Debilidades=Fuego x2, Lucha x2, Tierra x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Inmune a Veneno.
+
+[142]
+Rol=Soporte rápido / Pivot
+Puntuacion=2
+Habilidad=Bromista
+Naturaleza=Cauta (+Def.Esp, -At.Esp)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Tanque atacante | Acua Cola | Otra Vez | Golpe Bajo | Doble Filo
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Esterpent | Delazard | Hearbuncle
+Debilidades=Eléctrico x2, Planta x2, Lucha x2, Bicho x2, Hada x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Inmune a Psíquico.
+
+[143]
+Rol=Tanque físico
+Puntuacion=2
+Habilidad=Trifase Acuosa
+Naturaleza=Osada (+Def, -Atq)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Ventisca | Bola Sombra | Escaldar | Tajo Aéreo
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Surana | Sigmadeep | Delazard
+Debilidades=Lucha x4, Fuego x2, Roca x2, Acero x2
+Nota=Cuidado con Lucha (daño x4).
+Nota=Inmune a Fantasma.
+
+[144]
+Rol=Glass cannon especial
+Puntuacion=2.5
+Habilidad=Experto
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Llamarada | Brillo Mágico | Otra Vez | Retribución
+Objetos=Gafas Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Tuguartus | Nortalcon | Primarina
+Debilidades=Agua x2, Veneno x2, Tierra x2, Roca x2
+Nota=Inmune a Dragón.
+
+[145]
+Rol=Soporte / Utilidad
+Puntuacion=1.5
+Habilidad=Líbero
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Terratemblor | Tumba Rocas | Retribución | Alarido
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Argpos | Plussgop | Esterpent
+Debilidades=Volador x2, Psíquico x2, Hada x2
+
+[146]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Cervimoor (al nivel 36). No conviene usarlo en competitivo hasta evolucionar.
+
+[147]
+Rol=Sweeper físico
+Puntuacion=3.5
+Habilidad=Clorofila
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Envite Acuático | Fuerza Equina | Megacuerno | Tumba Rocas
+Set2=Ofensivo con utilidad | Envite Acuático | Fuerza Equina | Megacuerno | Fotosíntesis
+Objetos=Cinta Elección | Vidasfera | Cinta Experto
+Compañeros=Magaiant | Guacaraw | Frozelcius
+Debilidades=Planta x4
+Nota=Cuidado con Planta (daño x4).
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Tiene prioridad con Aqua Jet para rematar.
+Nota=Inmune a Eléctrico.
+
+[148]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Aguarash (al nivel 35). No conviene usarlo en competitivo hasta evolucionar.
+
+[149]
+Rol=Sweeper mixto
+Puntuacion=4
+Habilidad=Cenizas al aire
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Terremoto | Colmillo Ígneo | Triturar | Retribución
+Set2=Ofensivo con utilidad | Terremoto | Colmillo Ígneo | Triturar | Mofa
+Objetos=Cinta Elección | Vidasfera | Cinta Experto
+Compañeros=Guacaraw | Linkidra | Vilnina
+Debilidades=Agua x4, Tierra x2
+Nota=Cuidado con Agua (daño x4).
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Inmune a Eléctrico.
+
+[150]
+Rol=Sweeper físico
+Puntuacion=4
+Habilidad=Cuerpo Horneado
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Setup (Danza Espada) | Danza Espada | Carantoña | Fuerza Bruta | Retribución
+Objetos=Vidasfera | Baya Ziuela | Seguro Debilidad
+Compañeros=Hefatsyro | Plussgop | Surana
+Debilidades=Veneno x2, Volador x2, Psíquico x2, Acero x2, Hada x2
+Nota=Inmune a Dragón.
+
+[151]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Carlash (al nivel 35). Su forma final es Hearbuncle. No conviene usarlo en competitivo hasta evolucionar.
+
+[152]
+Rol=Usable con Mineral Evolutivo · Muro físico / Soporte
+Puntuacion=3.5
+Habilidad=Robustez
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Carantoña | Recuperación | Giro Rápido | Terratemblor
+Set2=4 ataques (Chaleco Asalto / Choice) | Carantoña | Terratemblor | Tumba Rocas | Mordisco
+Objetos=Mineral Evolutivo | Restos | Casco Dentado
+Compañeros=Nortalcon | Linkidra | Primarina
+Debilidades=Fuego x2, Tierra x2
+Nota=Con Mineral Evolutivo su Defensa y Defensa Especial suben x1.5: aguanta muchísimo para ser una preevolución.
+Nota=Evoluciona a Hearbuncle (subiendo de nivel equipado con Revestim. Metálico). Evolucionado suele rendir más.
+Nota=Inmune a Veneno, Dragón.
+
+[153]
+Rol=Tanque ofensivo físico
+Puntuacion=5
+Habilidad=Caparazón
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Carantoña | Terratemblor | Tumba Rocas | Mordisco
+Set2=Resistente con recuperación | Recuperación | Carantoña | Terratemblor | Giro Rápido
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Nortalcon | Linkidra | Primarina
+Debilidades=Fuego x2, Tierra x2
+Nota=Inmune a Veneno, Dragón.
+
+[154]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Frozteegon (al nivel 40). Su forma final es Frozelcius. No conviene usarlo en competitivo hasta evolucionar.
+
+[155]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Frozelcius (subiendo de nivel equipado con Piedra Hielo). No conviene usarlo en competitivo hasta evolucionar.
+
+[156]
+Rol=Sweeper físico
+Puntuacion=5
+Habilidad=Nevada
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Terratemblor | Tumba Rocas | Mordisco | Retribución
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Hearbuncle | Oesuri | Anoxium
+Debilidades=Lucha x2, Roca x2, Dragón x2, Acero x2, Hada x2
+
+[157]
+Rol=Tanque ofensivo físico
+Puntuacion=2
+Habilidad=Más
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Mordisco | Retribución | Estoicismo | Placaje
+Objetos=Cinta Elección | Pañuelo Elección | Restos
+Compañeros=Gyganovolt | Austreel | Gezonda
+Debilidades=Fuego x2, Volador x2, Roca x2
+
+[158]
+Rol=Sweeper mixto
+Puntuacion=3.5
+Habilidad=Manto Níveo
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Tumba Rocas | Retribución | Bola Sombra | Hidropulso
+Objetos=Cinta Elección | Pañuelo Elección | Restos
+Compañeros=Yaguattoo | Chivane | Facturito
+Debilidades=Eléctrico x2, Hielo x2, Roca x2, Fantasma x2, Siniestro x2
+Nota=Inmune a Normal, Lucha, Tierra.
+
+[159]
+Rol=Tanque ofensivo físico
+Puntuacion=3.5
+Habilidad=Manto Níveo
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Tumba Rocas | Retribución | Bola Sombra | Hidropulso
+Objetos=Cinta Elección | Pañuelo Elección | Restos
+Compañeros=Vermithief | Chivane | Frozelcius
+Debilidades=Agua x2, Planta x2, Hielo x2, Fantasma x2, Siniestro x2
+Nota=Inmune a Normal, Eléctrico, Lucha.
+
+[160]
+Rol=Sweeper mixto
+Puntuacion=5
+Habilidad=Sebo
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Setup (Rompecoraza) | Rompecoraza | Bola Sombra | Poder Pasado | Hidropulso
+Set2=Choice / 4 ataques | Bola Sombra | Poder Pasado | Hidropulso | Bomba Ácida
+Objetos=Vidasfera | Baya Ziuela | Seguro Debilidad
+Compañeros=Vermithief | Primarina | Ursicus
+Debilidades=Agua x2, Tierra x2, Roca x2, Fantasma x2, Siniestro x2
+Nota=Inmune a Normal, Lucha.
+
+[161]
+Rol=Tanque ofensivo físico
+Puntuacion=4
+Habilidad=Intimidación
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Tumba Rocas | Retribución | Hidropulso | Bola Sombra
+Objetos=Cinta Elección | Pañuelo Elección | Restos
+Compañeros=Vermithief | Jacartina | Flamaire
+Debilidades=Eléctrico x2, Planta x2, Fantasma x2, Siniestro x2
+Nota=Inmune a Normal, Lucha.
+
+[162]
+Rol=Sweeper mixto
+Puntuacion=5
+Habilidad=Intimidación
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Terratemblor | Tumba Rocas | Retribución | Estoicismo
+Objetos=Cinta Elección | Pañuelo Elección | Restos
+Compañeros=Gyganovolt | Austreel | Gezonda
+Debilidades=Fuego x2, Volador x2, Roca x2
+
+[163]
+Rol=Sweeper especial
+Puntuacion=5
+Habilidad=Intimidación
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Hidropulso | Bola Sombra | Terratemblor | Tumba Rocas
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Vermithief | Maliya | Nortalcon
+Debilidades=Tierra x2, Psíquico x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+
+[164]
+Rol=Sweeper mixto
+Puntuacion=4.5
+Habilidad=Intimidación
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Terratemblor | Retribución | Bola Sombra | Placaje
+Objetos=Cinta Elección | Pañuelo Elección | Restos
+Compañeros=Flamaire | Plussgop | Austreel
+Debilidades=Fantasma x2, Acero x2
+Nota=Inmune a Normal, Lucha, Dragón.
+
+[165]
+Rol=Sweeper mixto
+Puntuacion=4.5
+Habilidad=Ojocompuesto
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Bomba Imán | Mordisco | Retribución | Pantalla Luz
+Objetos=Cinta Elección | Pañuelo Elección | Restos
+Compañeros=Auriel | Vermithief | Primarina
+Debilidades=Fuego x2, Tierra x2, Fantasma x2, Siniestro x2
+Nota=Inmune a Veneno.
+
+[166]
+Rol=Usable con Mineral Evolutivo · Muro especial / Soporte
+Puntuacion=3.5
+Habilidad=Bromista
+Naturaleza=Cauta (+Def.Esp, -At.Esp)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Defensivo | Plancha | Luz Lunar | Protección | Sísmico
+Set2=4 ataques (Chaleco Asalto / Choice) | Plancha | Sísmico | Cabezazo Zen | Carantoña
+Objetos=Mineral Evolutivo | Restos | Botas Gruesas
+Compañeros=Gyganovolt | Austreel | Gezonda
+Debilidades=Fuego x2, Volador x2, Roca x2
+Nota=Con Mineral Evolutivo su Defensa y Defensa Especial suben x1.5: aguanta muchísimo para ser una preevolución.
+Nota=Evoluciona a Driftle (usando Vinilo Viejo). Evolucionado suele rendir más.
+
+[167]
+Rol=Soporte / Utilidad
+Puntuacion=4
+Habilidad=Cola Surf
+Naturaleza=Cauta (+Def.Esp, -At.Esp)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Defensivo | Plancha | Luz Lunar | Protección | Voltio Cruel
+Set2=4 ataques (Chaleco Asalto / Choice) | Plancha | Voltio Cruel | Sísmico | Carantoña
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Primarina | Guleye | Oesuri
+Debilidades=Fuego x2, Roca x2
+
+[168]
+Rol=Usable con Mineral Evolutivo · Muro especial / Soporte
+Puntuacion=3.5
+Habilidad=Bromista
+Naturaleza=Serena (+Def.Esp, -Atq)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Defensivo | Zumbido | Luz Lunar | Otra Vez | Hidropulso
+Set2=4 ataques (Chaleco Asalto / Choice) | Zumbido | Hidropulso | Bola Sombra | Alarido
+Objetos=Mineral Evolutivo | Restos | Botas Gruesas
+Compañeros=Gyganovolt | Austreel | Gezonda
+Debilidades=Fuego x2, Volador x2, Roca x2
+Nota=Con Mineral Evolutivo su Defensa y Defensa Especial suben x1.5: aguanta muchísimo para ser una preevolución.
+Nota=Evoluciona a Mistella (usando Vinilo Viejo). Evolucionado suele rendir más.
+
+[169]
+Rol=Soporte / Utilidad
+Puntuacion=4
+Habilidad=Bromista
+Naturaleza=Serena (+Def.Esp, -Atq)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Defensivo | Bola de Polen | Luz Lunar | Otra Vez | Rayo
+Set2=4 ataques (Chaleco Asalto / Choice) | Bola de Polen | Rayo | Hidropulso | Bola Sombra
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Primarina | Guleye | Oesuri
+Debilidades=Fuego x2, Roca x2
+
+[170]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Gabite (al nivel 24). Su forma final es Gezonda. No conviene usarlo en competitivo hasta evolucionar.
+
+[171]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Gezonda (usando Piedra Fuego). No conviene usarlo en competitivo hasta evolucionar.
+
+[172]
+Rol=Sweeper físico
+Puntuacion=5
+Habilidad=Geo-Fricción
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Terremoto | Envite Ígneo | Enfado | Mordisco
+Set2=Ofensivo con utilidad | Terremoto | Envite Ígneo | Enfado | Viento Afín
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Guacaraw | Linkidra | Vilnina
+Debilidades=Agua x4, Tierra x2
+Nota=Cuidado con Agua (daño x4).
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Inmune a Eléctrico.
+
+[173]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Lampent (al nivel 23). Su forma final es Flalhume. No conviene usarlo en competitivo hasta evolucionar.
+
+[174]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Flalhume (usando Piedra Día). No conviene usarlo en competitivo hasta evolucionar.
+
+[175]
+Rol=Wallbreaker físico (lento)
+Puntuacion=4.5
+Habilidad=Absorbe Fuego
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Envite Ígneo | Carantoña | Mazazo | Sombra Vil
+Set2=Resistente con recuperación | Luz Lunar | Envite Ígneo | Carantoña | Fuego Fatuo
+Objetos=Cinta Elección | Vidasfera | Cinta Experto
+Compañeros=Tuguartus | Nortalcon | Primarina
+Debilidades=Agua x2, Veneno x2, Tierra x2, Roca x2
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+Nota=Tiene prioridad con Sombra Vil para rematar.
+Nota=Inmune a Dragón.
+
+[176]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Tanlarina (usando Vinilo Viejo). No conviene usarlo en competitivo hasta evolucionar.
+
+[177]
+Rol=Sweeper físico
+Puntuacion=3.5
+Habilidad=Regia Presencia
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Carantoña | Juego Sucio | Tumba Rocas | Retribución
+Set2=Resistente con recuperación | Deseo | Carantoña | Juego Sucio | Moflete Estático
+Objetos=Cinta Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Argpos | Esterpent | Anoxium
+Debilidades=Veneno x2, Acero x2, Hada x2
+Nota=Tiene prioridad con Golpe Bajo para rematar.
+Nota=Inmune a Psíquico, Dragón.
+
+[178]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Kelpalge (al nivel 40). No conviene usarlo en competitivo hasta evolucionar.
+
+[179]
+Rol=Atacante especial
+Puntuacion=4
+Habilidad=Adaptable
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Lluevehojas | Hidrobomba | Pulso Dragón | Fotosíntesis
+Set2=Líder (hazards) | Púas Tóxicas | Lluevehojas | Hidrobomba | Pulso Dragón
+Objetos=Gafas Elección | Vidasfera | Cinta Experto
+Compañeros=Hearbuncle | Petrotaur | Esterpent
+Debilidades=Veneno x2, Volador x2, Bicho x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+
+[180]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Toxtricity (al nivel 30). No conviene usarlo en competitivo hasta evolucionar.
+
+[181]
+Rol=Atacante especial
+Puntuacion=4
+Habilidad=Experto
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Setup (Paz Mental) | Paz Mental | Amplificador | Psíquico | Bola Sombra
+Set2=Choice / 4 ataques | Amplificador | Psíquico | Bola Sombra | Estruendo
+Objetos=Gafas Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Auriel | Esmaguin | Vermithief
+Debilidades=Tierra x2, Bicho x2, Fantasma x2, Siniestro x2
+
+[182]
+Rol=Tanque físico
+Puntuacion=3
+Habilidad=Bromista
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Ladrón | Mofa | Carantoña | Retribución
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Argpos | Esterpent | Anoxium
+Debilidades=Veneno x2, Acero x2, Hada x2
+Nota=Inmune a Psíquico, Dragón.
+
+[183]
+Rol=Tanque físico
+Puntuacion=2
+Habilidad=Efecto Espora
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Terratemblor | Tumba Rocas | Retribución | Bola Sombra
+Objetos=Lodo Negro | Casco Dentado | Baya Zidra
+Compañeros=Vermithief | Maliya | Nortalcon
+Debilidades=Tierra x2, Psíquico x2
+
+[184]
+Rol=Tanque ofensivo especial
+Puntuacion=1
+Habilidad=Piel Tosca
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Ofensivo con utilidad | Bola Sombra | Alarido | Terratemblor | Mordisco
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Vilnina | Maliya | Guacaraw
+Debilidades=Agua x2, Hielo x2, Tierra x2, Psíquico x2
+Nota=Inmune a Eléctrico.
+
+[185]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Guleye (usando Piedra Noche). No conviene usarlo en competitivo hasta evolucionar.
+
+[186]
+Rol=Tanque físico
+Puntuacion=3.5
+Habilidad=Gula
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Juego Sucio | Recuperación | Fuego Fatuo | Trampa Rocas
+Set2=4 ataques (Chaleco Asalto / Choice) | Juego Sucio | Roca Afilada | Demolición | Puño Hielo
+Objetos=Restos | Casco Dentado | Botas Gruesas
+Compañeros=Nortalcon | Bugedion | Fronado
+Debilidades=Lucha x4, Agua x2, Planta x2, Tierra x2, Bicho x2, Acero x2, Hada x2
+Nota=Cuidado con Lucha (daño x4).
+Nota=Inmune a Psíquico.
+
+[187]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Kakuna (al nivel 9). Su forma final es Scywasp. No conviene usarlo en competitivo hasta evolucionar.
+
+[188]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Scywasp (al nivel 19). No conviene usarlo en competitivo hasta evolucionar.
+
+[189]
+Rol=Sweeper físico
+Puntuacion=3
+Habilidad=Ímpetu Arena
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Setup (Danza Espada) | Danza Espada | Ida y Vuelta | Taladradora | Pirueta Helada
+Set2=Resistente con recuperación | Respiro | Ida y Vuelta | Taladradora | Tóxico
+Objetos=Vidasfera | Baya Ziuela | Banda Aguante
+Compañeros=Austreel | Thundoatix | Basiscale
+Debilidades=Fuego x2, Agua x2, Hielo x2, Volador x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Inmune a Eléctrico.
+
+[190]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Swanna (al nivel 35). No conviene usarlo en competitivo hasta evolucionar.
+
+[191]
+Rol=Soporte / Utilidad
+Puntuacion=4.5
+Habilidad=Competitivo
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Envite Acuático | Respiro | Tóxico | Trampa Rocas
+Set2=4 ataques (Chaleco Asalto / Choice) | Envite Acuático | Ala de Acero | Pájaro Osado | Demolición
+Objetos=Restos | Casco Dentado | Botas Gruesas
+Compañeros=Arnero | Thynatch | Linkidra
+Debilidades=Eléctrico x2, Lucha x2, Tierra x2
+Nota=Inmune a Veneno.
+
+[192]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Armarouge (usando Piedra Día) o Ceruledge (usando Piedra Noche) o Goldress (usando Piedra Alba). No conviene usarlo en competitivo hasta evolucionar.
+
+[193]
+Rol=Tanque ofensivo especial
+Puntuacion=4
+Habilidad=Remoto
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Setup (Paz Mental) | Paz Mental | Rayo Hielo | Psicocarga | Bola Sombra
+Set2=Choice / 4 ataques | Rayo Hielo | Psicocarga | Bola Sombra | Hidropulso
+Objetos=Gafas Elección | Pañuelo Elección | Chaleco Asalto
+Compañeros=Primarina | Flamaire | Hearbuncle
+Debilidades=Fuego x2, Bicho x2, Roca x2, Fantasma x2, Siniestro x2, Acero x2
+
+[194]
+Rol=Tanque especial
+Puntuacion=3
+Habilidad=Cortante
+Naturaleza=Cauta (+Def.Esp, -At.Esp)
+EVs=252 PS / 4 Def / 252 Def.Esp
+Set1=Tanque atacante | Carámbano | Garra Umbría | Terratemblor | Espada Lamento
+Set2=Setup (Danza Espada) | Danza Espada | Carámbano | Garra Umbría | Terratemblor
+Objetos=Restos | Chaleco Asalto | Botas Gruesas
+Compañeros=Vilnina | Flamaire | Speartan
+Debilidades=Fuego x2, Roca x2, Fantasma x2, Siniestro x2, Acero x2
+Nota=Inmune a Normal, Lucha.
+
+[195]
+Rol=Muro físico / Soporte
+Puntuacion=3
+Habilidad=Ignífugo
+Naturaleza=Osada (+Def, -Atq)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Rayo Hielo | Cañón Resplandor | Bola Sombra | Hidropulso
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Nortalcon | Sigmadeep | Primarina
+Debilidades=Fuego x4, Lucha x4, Tierra x2
+Nota=Cuidado con Fuego y Lucha (daño x4).
+Nota=Inmune a Veneno.
+
+[196]
+Rol=Atacante especial
+Puntuacion=1
+Habilidad=Armadura Frágil
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Ofensivo con utilidad | Bola Sombra | Protección | Poltergeist | Cabeza de Hierro
+Objetos=Gafas Elección | Vidasfera | Cinta Experto
+Compañeros=Vermithief | Auriel | Primarina
+Debilidades=Fuego x2, Tierra x2, Fantasma x2, Siniestro x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+Nota=Inmune a Normal, Lucha, Veneno.
+
+[197]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Alcremie (subiendo de nivel con Rueda Fuego). No conviene usarlo en competitivo hasta evolucionar.
+
+[198]
+Rol=Wallbreaker especial (lento)
+Puntuacion=3
+Habilidad=Velo Dulce
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Ofensivo con utilidad | Brillo Mágico | Vozarrón | Hidropulso | Recuperación
+Set2=Resistente con recuperación | Recuperación | Brillo Mágico | Vozarrón | Aromaterapia
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Argpos | Esterpent | Anoxium
+Debilidades=Veneno x2, Acero x2
+Nota=Inmune a Fantasma, Dragón.
+
+[199]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Ribombee (al nivel 25). No conviene usarlo en competitivo hasta evolucionar.
+
+[200]
+Rol=Sweeper físico
+Puntuacion=2.5
+Habilidad=Toque Tóxico
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Ofensivo con utilidad | Ida y Vuelta | Puya Nociva | Retribución | Remolino
+Objetos=Cinta Elección | Vidasfera | Cinta Experto
+Compañeros=Guleye | Austreel | Sigmadeep
+Debilidades=Fuego x2, Volador x2, Psíquico x2, Roca x2
+Nota=Su gran Velocidad le permite atacar primero a casi todo.
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+
+[201]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Braixen (al nivel 16). Su forma final es Delphox. No conviene usarlo en competitivo hasta evolucionar.
+
+[202]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Delphox (al nivel 36). No conviene usarlo en competitivo hasta evolucionar.
+
+[203]
+Rol=Sweeper especial
+Puntuacion=4
+Habilidad=Mar Llamas
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Lanzallamas | Tierra Viva | Bola Sombra | Psíquico
+Set2=Resistente con recuperación | Deseo | Lanzallamas | Tierra Viva | Fuego Fatuo
+Objetos=Gafas Elección | Pañuelo Elección | Chaleco Asalto
+Compañeros=Guacaraw | Linkidra | Vilnina
+Debilidades=Agua x4, Tierra x2
+Nota=Cuidado con Agua (daño x4).
+Nota=Inmune a Eléctrico.
+
+[204]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Barbaracle (al nivel 39). No conviene usarlo en competitivo hasta evolucionar.
+
+[205]
+Rol=Wallbreaker físico (lento)
+Puntuacion=3.5
+Habilidad=Garra Dura
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Setup (Rompecoraza) | Rompecoraza | Chuzos | Acua Cola | Tajo Cruzado
+Set2=Choice / 4 ataques | Chuzos | Acua Cola | Tajo Cruzado | Tajo Umbrío
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Oesuri | Palocau | Sigmadeep
+Debilidades=Eléctrico x2, Planta x2, Lucha x2, Roca x2
+
+[206]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Brionne (al nivel 17). Su forma final es Primarina. No conviene usarlo en competitivo hasta evolucionar.
+
+[207]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Primarina (al nivel 34). No conviene usarlo en competitivo hasta evolucionar.
+
+[208]
+Rol=Wallbreaker especial (lento)
+Puntuacion=3.5
+Habilidad=Torrente
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Aria Burbuja | Esfera Aural | Fuerza Lunar | Bola Sombra
+Set2=Ofensivo con utilidad | Aria Burbuja | Esfera Aural | Fuerza Lunar | Otra Vez
+Objetos=Gafas Elección | Vidasfera | Chaleco Asalto
+Compañeros=Argpos | Thundoatix | Vermithief
+Debilidades=Eléctrico x2, Planta x2, Volador x2, Psíquico x2, Hada x2
+Nota=Tiene prioridad con Onda Vacío para rematar.
+
+[209]
+Rol=Tanque ofensivo físico
+Puntuacion=3.5
+Habilidad=Autoestima
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Megacuerno | Roca Afilada | Terratemblor | Doble Filo
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Austreel | Jasilex | Plasgor
+Debilidades=Agua x2, Roca x2, Acero x2
+Nota=Tiene prioridad con Amago para rematar.
+
+[210]
+Rol=Tanque físico
+Puntuacion=4.5
+Habilidad=Sebo
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Envite Ígneo | Batido | Terratemblor | Machada
+Set2=4 ataques (Chaleco Asalto / Choice) | Envite Ígneo | Terratemblor | Machada | Mordisco
+Objetos=Restos | Casco Dentado | Botas Gruesas
+Compañeros=Jasilex | Nortalcon | Sigmadeep
+Debilidades=Agua x2, Tierra x2, Roca x2
+
+[211]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Grotle (al nivel 18). Su forma final es Torterra. No conviene usarlo en competitivo hasta evolucionar.
+
+[212]
+Rol=Usable con Mineral Evolutivo · Muro físico / Soporte
+Puntuacion=1.5
+Habilidad=Espesura
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Defensivo | Bomba Germen | Fotosíntesis | Drenadoras | Fuerza Bruta
+Set2=4 ataques (Chaleco Asalto / Choice) | Bomba Germen | Fuerza Bruta | Tumba Rocas | Triturar
+Objetos=Mineral Evolutivo | Restos | Casco Dentado
+Compañeros=Hefatsyro | FosilAgua2 | Plasgor
+Debilidades=Fuego x2, Hielo x2, Veneno x2, Volador x2, Bicho x2
+Nota=Con Mineral Evolutivo su Defensa y Defensa Especial suben x1.5: aguanta muchísimo para ser una preevolución.
+Nota=Evoluciona a Torterra (al nivel 32). Evolucionado suele rendir más.
+
+[213]
+Rol=Wallbreaker físico (lento)
+Puntuacion=4.5
+Habilidad=Roca Solida
+Naturaleza=Firme (+Atq, -At.Esp)
+EVs=252 Atq / 252 PS / 4 Def
+Set1=Setup (Maldición) | Maldición | Mazazo | Avalancha | Fuerza Bruta
+Set2=Resistente con recuperación | Fotosíntesis | Mazazo | Avalancha | Drenadoras
+Objetos=Cinta Elección | Vidasfera | Restos
+Compañeros=Esterpent | Anoxium | Hearbuncle
+Debilidades=Hielo x2, Lucha x2, Bicho x2, Acero x2
+Nota=Muy lento: rinde bien en equipos de Espacio Raro (Trick Room).
+
+[214]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Cherrim (al nivel 25). No conviene usarlo en competitivo hasta evolucionar.
+
+[215]
+Rol=Atacante especial
+Puntuacion=1.5
+Habilidad=Don Floral
+Naturaleza=Modesta (+At.Esp, -Atq)
+EVs=252 At.Esp / 252 PS / 4 Def
+Set1=Choice / 4 ataques | Energibola | Bomba Lodo | Bola Sombra | Hidropulso
+Set2=Resistente con recuperación | Sol Matinal | Energibola | Bomba Lodo | Drenadoras
+Objetos=Gafas Elección | Vidasfera | Cinta Experto
+Compañeros=Guleye | Austreel | Thundoatix
+Debilidades=Fuego x2, Hielo x2, Volador x2, Psíquico x2
+Nota=Muy frágil: evitá dejarlo recibir golpes súper efectivos.
+
+[216]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Scrafty (al nivel 39). No conviene usarlo en competitivo hasta evolucionar.
+
+[217]
+Rol=Muro físico / Soporte
+Puntuacion=3.5
+Habilidad=Intimidación
+Naturaleza=Agitada (+Def, -At.Esp)
+EVs=252 PS / 252 Def / 4 Def.Esp
+Set1=Tanque atacante | Triturar | Cabeza de Hierro | Puño Hielo | Terratemblor
+Set2=Setup (Danza Dragón) | Danza Dragón | Triturar | Cabeza de Hierro | Puño Hielo
+Objetos=Restos | Casco Dentado | Baya Zidra
+Compañeros=Nortalcon | Linkidra | Fronado
+Debilidades=Lucha x4, Fuego x2, Tierra x2
+Nota=Cuidado con Lucha (daño x4).
+Nota=Inmune a Veneno, Psíquico.
+
+[218]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Delcatty (usando Piedra Lunar). No conviene usarlo en competitivo hasta evolucionar.
+
+[219]
+Rol=Atacante especial
+Puntuacion=1.5
+Habilidad=Cálculo Final
+Naturaleza=Miedosa (+Vel, -Atq)
+EVs=252 At.Esp / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Meteoros | Psíquico | Bomba Fango | Voz Cautivadora
+Set2=Resistente con recuperación | Deseo | Meteoros | Psíquico | Cascabel Cura
+Objetos=Gafas Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Facturito | Viskyall | Hefatsyro
+Debilidades=Bicho x2, Siniestro x2
+Nota=Inmune a Fantasma.
+
+[220]
+Rol=En desarrollo
+Puntuacion=0
+Nota=Evoluciona a Toxicroak (al nivel 37). No conviene usarlo en competitivo hasta evolucionar.
+
+[221]
+Rol=Atacante físico
+Puntuacion=2.5
+Habilidad=Piel Seca
+Naturaleza=Alegre (+Vel, -At.Esp)
+EVs=252 Atq / 252 Vel / 4 PS
+Set1=Choice / 4 ataques | Puya Nociva | Puño Drenaje | Golpe Bajo | Retribución
+Set2=Ofensivo con utilidad | Puya Nociva | Puño Drenaje | Golpe Bajo | Mofa
+Objetos=Cinta Elección | Pañuelo Elección | Cinta Experto
+Compañeros=Vermithief | Bishnatrix | Argpos
+Debilidades=Psíquico x4, Tierra x2, Volador x2
+Nota=Cuidado con Psíquico (daño x4).
+Nota=Tiene prioridad con Golpe Bajo para rematar.
