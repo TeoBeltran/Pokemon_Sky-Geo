@@ -13,8 +13,7 @@ const DATA_FILES = {
   tm:        "data/tm.txt",
   items:     "data/items.txt",
   encounters:"data/encounters.txt",
-  forms:     "data/forms.txt",
-  comp:      "data/competitivo.txt"
+  forms:     "data/forms.txt"
 };
 const LS = {theme:"dex.theme"};
 
@@ -48,7 +47,7 @@ const S = {
   moves:new Map(), abilities:new Map(), items:new Map(), tm:new Map(), tmOrder:[],
   loaded:{}, tmNo:new Map(),
   filter:{q:"",types:[],mono:false,wild:false,nowild:false,sort:"id",dir:"asc"},
-  enc:new Map(), formData:new Map(), comp:new Map(),
+  enc:new Map(), formData:new Map(),
   shiny:false, listScroll:0
 };
 
@@ -112,26 +111,6 @@ const isSecretForm = x => /ancestral/i.test(x.name);
 /* ---------- forms.txt ----------
    [ESPECIE,forma]  ->  Type1= / Type2= / BaseStats= (mismo orden que pokemon.txt) / Abilities= / HiddenAbility=
    Solo hace falta poner lo que CAMBIA respecto de la forma base. */
-/* ---------- competitivo.txt ----------
-   [nnn] y debajo líneas Clave=Valor (Rol, Habilidad, Naturaleza, EVs, Set1, Set2, Objetos, Compañeros, Debilidades, Nota) */
-function parseComp(txt){
-  const m = new Map(); let cur = null;
-  for (const raw of lines(txt)){
-    const l = raw.trim(); if (!l || l.charAt(0) === "#") continue;
-    const h = /^\[(\d+)\]$/.exec(l);
-    if (h){ cur = {sets:[], notes:[]}; m.set(parseInt(h[1],10), cur); continue; }
-    if (!cur) continue;
-    const i = l.indexOf("="); if (i < 0){ cur.notes.push(l); continue; }
-    const k = l.slice(0,i).trim().toLowerCase(), v = l.slice(i+1).trim();
-    const parts = v.split("|").map(x=>x.trim()).filter(Boolean);
-    if (/^set\d*$/.test(k)) cur.sets.push({name: parts.length > 1 ? parts[0] : "Set", moves: parts.length > 1 ? parts.slice(1) : parts});
-    else if (k === "nota" || k === "notas") cur.notes.push(v);
-    else if (k === "objetos" || k === "compañeros" || k === "companeros") cur[k.replace("ñ","n")] = parts;
-    else cur[k] = v;
-  }
-  return m;
-}
-
 function parseFormData(txt){
   const m = new Map(); let cur = null;
   for (const raw of lines(txt)){
@@ -338,7 +317,6 @@ function applyText(kind, txt){
   else if (kind === "tm"){ const r = parseTM(txt); S.tm = r.bySpecies; S.tmOrder = r.order; }
   else if (kind === "encounters") S.enc = parseEncounters(txt);
   else if (kind === "forms") S.formData = parseFormData(txt);
-  else if (kind === "comp") S.comp = parseComp(txt);
   S.loaded[kind] = true;
 }
 
@@ -589,74 +567,49 @@ function accordion(title, count, body, open){
   return d;
 }
 
-/* busca un movimiento por su nombre en español (o interno) para pintarlo con su tipo */
-let moveByName = null;
-function findMove(name){
-  if (!moveByName){ moveByName = new Map(); S.moves.forEach((m,k)=>{ moveByName.set(m.name.toLowerCase(), k); moveByName.set(k.toLowerCase(), k); }); }
-  const k = moveByName.get(String(name).toLowerCase()); return k ? [k, S.moves.get(k)] : [null, null];
-}
-function findSpecies(name){
-  const n = String(name).toLowerCase();
-  return S.list.find(x => x.name.toLowerCase() === n || (x.internal||"").toLowerCase() === n) || null;
-}
-/* estrellas 0-5 (admite medias) dibujadas con SVG */
-function starsEl(v){
-  v = Math.max(0, Math.min(5, Number(v) || 0));
-  const wrap = el("span",{class:"stars", title: v.toString().replace(".",",") + " de 5", "aria-label": v + " de 5 estrellas"});
-  const path = "M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z";
-  for (let i = 1; i <= 5; i++){
-    const fill = v >= i ? 1 : (v >= i - 0.5 ? 0.5 : 0);
-    const id = "sg" + Math.random().toString(36).slice(2,8);
-    wrap.insertAdjacentHTML("beforeend",
-      `<svg viewBox="0 0 24 24" width="18" height="18"><defs><linearGradient id="${id}"><stop offset="${fill*100}%" stop-color="var(--star)"/><stop offset="${fill*100}%" stop-color="var(--star-off)"/></linearGradient></defs><path d="${path}" fill="url(#${id})" stroke="var(--star-stroke)" stroke-width="1"/></svg>`);
-  }
-  wrap.append(el("b",{class:"stars-n num"}, v.toString().replace(".",",")));
-  return wrap;
-}
+/* ---------- tabla de tipos (eficacias) ---------- */
+const TYPE_ORDER_ALL = ["NORMAL","FIRE","WATER","ELECTRIC","GRASS","ICE","FIGHTING","POISON","GROUND","FLYING","PSYCHIC","BUG","ROCK","GHOST","DRAGON","DARK","STEEL","FAIRY"];
+const TYPE_CHART = {
+  NORMAL:{ROCK:.5,GHOST:0,STEEL:.5},
+  FIRE:{FIRE:.5,WATER:.5,GRASS:2,ICE:2,BUG:2,ROCK:.5,DRAGON:.5,STEEL:2},
+  WATER:{FIRE:2,WATER:.5,GRASS:.5,GROUND:2,ROCK:2,DRAGON:.5},
+  ELECTRIC:{WATER:2,ELECTRIC:.5,GRASS:.5,GROUND:0,FLYING:2,DRAGON:.5},
+  GRASS:{FIRE:.5,WATER:2,GRASS:.5,POISON:.5,GROUND:2,FLYING:.5,BUG:.5,ROCK:2,DRAGON:.5,STEEL:.5},
+  ICE:{FIRE:.5,WATER:.5,GRASS:2,ICE:.5,GROUND:2,FLYING:2,DRAGON:2,STEEL:.5},
+  FIGHTING:{NORMAL:2,ICE:2,POISON:.5,FLYING:.5,PSYCHIC:.5,BUG:.5,ROCK:2,GHOST:0,DARK:2,STEEL:2,FAIRY:.5},
+  POISON:{GRASS:2,POISON:.5,GROUND:.5,ROCK:.5,GHOST:.5,STEEL:0,FAIRY:2},
+  GROUND:{FIRE:2,ELECTRIC:2,GRASS:.5,POISON:2,FLYING:0,BUG:.5,ROCK:2,STEEL:2},
+  FLYING:{ELECTRIC:.5,GRASS:2,FIGHTING:2,BUG:2,ROCK:.5,STEEL:.5},
+  PSYCHIC:{FIGHTING:2,POISON:2,PSYCHIC:.5,DARK:0,STEEL:.5},
+  BUG:{FIRE:.5,GRASS:2,FIGHTING:.5,POISON:.5,FLYING:.5,PSYCHIC:2,GHOST:.5,DARK:2,STEEL:.5,FAIRY:.5},
+  ROCK:{FIRE:2,ICE:2,FIGHTING:.5,GROUND:.5,FLYING:2,BUG:2,STEEL:.5},
+  GHOST:{NORMAL:0,PSYCHIC:2,GHOST:2,DARK:.5},
+  DRAGON:{DRAGON:2,STEEL:.5,FAIRY:0},
+  DARK:{FIGHTING:.5,PSYCHIC:2,GHOST:2,DARK:.5,FAIRY:.5},
+  STEEL:{FIRE:.5,WATER:.5,ELECTRIC:.5,ICE:2,ROCK:2,STEEL:.5,FAIRY:2},
+  FAIRY:{FIRE:.5,FIGHTING:2,POISON:.5,DRAGON:2,DARK:2,STEEL:.5}
+};
+const typeEff = (atk, defs) => defs.reduce((m,d) => m * ((TYPE_CHART[atk]||{})[d] ?? 1), 1);
 
-function compCard(p){
-  const c = S.comp.get(p.id);
-  if (!c) return null;
-  const card = el("div",{class:"card full comp"}, el("h3",null,"Competitivo",
-    el("span",{class:"comp-head"}, c.rol ? el("span",{class:"comp-role"}, c.rol) : null, c.puntuacion != null ? starsEl(c.puntuacion) : null)));
-  // Pokémon que todavía evoluciona: solo la nota
-  if (!c.sets.length && !c.habilidad){
-    card.append(el("div",{class:"comp-evo"}, c.notes.map(n => el("p",null,n))));
-    return card;
+/* Debilidades, resistencias, inmunidades y a qué tipos les pega fuerte con su STAB */
+function typesCard(types){
+  const card = el("div",{class:"card full tcard"}, el("h3",null,"Tipos: ventajas y desventajas"));
+  const w4 = [], w2 = [], r2 = [], r4 = [], imm = [];
+  for (const t of TYPE_ORDER_ALL){
+    const e = typeEff(t, types);
+    if (e === 0) imm.push(t); else if (e >= 4) w4.push(t); else if (e >= 2) w2.push(t);
+    else if (e <= .25) r4.push(t); else if (e < 1) r2.push(t);
   }
-  const kv = el("div",{class:"comp-kv"});
-  for (const [k,label] of [["habilidad","Habilidad"],["naturaleza","Naturaleza"],["evs","EVs"]])
-    if (c[k]) kv.append(el("div",null, el("b",null,label), el("span",null,c[k])));
-  card.append(kv);
-  if (c.sets.length){
-    const sets = el("div",{class:"comp-sets"});
-    c.sets.forEach((st,i) => {
-      const box = el("div",{class:"comp-set"}, el("div",{class:"comp-set-h"}, el("span",{class:"num"},"Opción "+(i+1)), el("b",null,st.name)));
-      const ul = el("div",{class:"comp-moves"});
-      for (const mvName of st.moves){
-        const [, m] = findMove(mvName);
-        const col = m ? typeInfo(m.type)[1] : "var(--border-strong)";
-        ul.append(el("div",{class:"comp-move",style:`--mc:${col}`, title: m && m.desc ? m.desc : null},
-          el("span",{class:"mdot"}), el("span",{class:"mn"}, mvName),
-          m ? el("small",null, (CAT[m.cat]||m.cat) + (m.power > 1 ? " · " + m.power : "")) : null));
-      }
-      box.append(ul); sets.append(box);
-    });
-    card.append(sets);
-  }
-  const row = (label, content) => el("div",{class:"comp-row"}, el("b",null,label), el("div",{class:"comp-row-c"}, content));
-  if (c.objetos && c.objetos.length) card.append(row("Objetos", c.objetos.map((x,i)=>el("span",{class:"comp-chip"+(i===0?" main":"")}, x))));
-  if (c.companeros && c.companeros.length) card.append(row("Compañeros", c.companeros.map(n => {
-    const q = findSpecies(n);
-    return q ? el("a",{class:"comp-mate",href:"#/p/"+q.id}, iconEl(q.id), el("span",null,q.name), el("span",{class:"types"}, q.types.map(t=>typeBadge(t))))
-             : el("span",{class:"comp-chip"}, n);
-  })));
-  if (c.debilidades) card.append(row("Debilidades", c.debilidades.split(",").map(x=>x.trim()).filter(Boolean).map(x => {
-    const m = /^(.*?)\s*x\s*(\d+)$/i.exec(x); const name = m ? m[1] : x, mult = m ? m[2] : "";
-    const key = Object.keys(TYPES).find(k => TYPES[k][0].toLowerCase() === name.toLowerCase());
-    return el("span",{class:"comp-weak"+(mult==="4"?" x4":"")}, key ? typeBadge(key) : name, mult ? el("small",{class:"num"},"x"+mult) : null);
-  })));
-  if (c.notes.length) card.append(el("ul",{class:"comp-notes"}, c.notes.map(n=>el("li",null,n))));
+  const strong = TYPE_ORDER_ALL.filter(d => types.some(a => typeEff(a, [d]) >= 2));
+  const badge = (t, mult) => el("span",{class:"tc-item"}, typeBadge(t), mult ? el("small",{class:"num"}, mult) : null);
+  const row = (label, hint, cls, list) => el("div",{class:"tc-row " + cls},
+    el("div",{class:"tc-label"}, el("b",null,label), el("small",null,hint)),
+    el("div",{class:"tc-list"}, list.length ? list : el("span",{class:"tc-none"},"Ninguno")));
+  card.append(
+    row("Débil a", "recibe más daño", "weak", [...w4.map(t=>badge(t,"x4")), ...w2.map(t=>badge(t,"x2"))]),
+    row("Resiste", "recibe menos daño", "res", [...r4.map(t=>badge(t,"x¼")), ...r2.map(t=>badge(t,"x½"))]),
+    row("Inmune a", "no le hace daño", "imm", imm.map(t=>badge(t,"x0"))),
+    row("Pega fuerte a", "con movimientos de su tipo (STAB)", "strong", strong.map(t=>badge(t,"x2"))));
   return card;
 }
 
@@ -786,7 +739,7 @@ function renderDetail(id, formN){
       `Evoluciona de ${pv.from.name}: ${evoText(pv.evo)}.`));
   }
 
-  const grid = el("div",{class:"grid2"}, stats, abil, evoCard, compCard(p), encountersCard(p));
+  const grid = el("div",{class:"grid2"}, stats, abil, evoCard, typesCard(V.types), encountersCard(p));
 
   /* moves */
   const lvRows = p.lvl.map(([l,k])=>[l===0?"Evo":l, k]);

@@ -1,0 +1,153 @@
+#==============================================================================
+# TIPOS - tabla de eficacias que usa la Pokédex web
+#   Debil:   tipos de ataque que le hacen x2 a este tipo
+#   Resiste: tipos de ataque que le hacen x½
+#   Inmune:  tipos de ataque que no le hacen daño (x0)
+#   Fuerte:  tipos a los que este tipo les pega x2 al atacar
+# Para doble tipo la web multiplica (ej. dos debilidades = x4).
+# Los nombres tienen que coincidir con los de 'Tipo:'.
+#==============================================================================
+
+[0]
+Tipo: Normal
+Interno: NORMAL
+Debil: Lucha
+Resiste: 
+Inmune: Fantasma
+Fuerte: 
+
+[1]
+Tipo: Fuego
+Interno: FIRE
+Debil: Agua, Tierra, Roca
+Resiste: Fuego, Planta, Hielo, Bicho, Acero, Hada
+Inmune: 
+Fuerte: Planta, Hielo, Bicho, Acero
+
+[2]
+Tipo: Agua
+Interno: WATER
+Debil: Eléctrico, Planta
+Resiste: Fuego, Agua, Hielo, Acero
+Inmune: 
+Fuerte: Fuego, Tierra, Roca
+
+[3]
+Tipo: Eléctrico
+Interno: ELECTRIC
+Debil: Tierra
+Resiste: Eléctrico, Volador, Acero
+Inmune: 
+Fuerte: Agua, Volador
+
+[4]
+Tipo: Planta
+Interno: GRASS
+Debil: Fuego, Hielo, Veneno, Volador, Bicho
+Resiste: Agua, Eléctrico, Planta, Tierra
+Inmune: 
+Fuerte: Agua, Tierra, Roca
+
+[5]
+Tipo: Hielo
+Interno: ICE
+Debil: Fuego, Lucha, Roca, Acero
+Resiste: Hielo
+Inmune: 
+Fuerte: Planta, Tierra, Volador, Dragón
+
+[6]
+Tipo: Lucha
+Interno: FIGHTING
+Debil: Volador, Psíquico, Hada
+Resiste: Bicho, Roca, Siniestro
+Inmune: 
+Fuerte: Normal, Hielo, Roca, Siniestro, Acero
+
+[7]
+Tipo: Veneno
+Interno: POISON
+Debil: Tierra, Psíquico
+Resiste: Planta, Lucha, Veneno, Bicho, Hada
+Inmune: 
+Fuerte: Planta, Hada
+
+[8]
+Tipo: Tierra
+Interno: GROUND
+Debil: Agua, Planta, Hielo
+Resiste: Veneno, Roca
+Inmune: Eléctrico
+Fuerte: Fuego, Eléctrico, Veneno, Roca, Acero
+
+[9]
+Tipo: Volador
+Interno: FLYING
+Debil: Eléctrico, Hielo, Roca
+Resiste: Planta, Lucha, Bicho
+Inmune: Tierra
+Fuerte: Planta, Lucha, Bicho
+
+[10]
+Tipo: Psíquico
+Interno: PSYCHIC
+Debil: Bicho, Fantasma, Siniestro
+Resiste: Lucha, Psíquico
+Inmune: 
+Fuerte: Lucha, Veneno
+
+[11]
+Tipo: Bicho
+Interno: BUG
+Debil: Fuego, Volador, Roca
+Resiste: Planta, Lucha, Tierra
+Inmune: 
+Fuerte: Planta, Psíquico, Siniestro
+
+[12]
+Tipo: Roca
+Interno: ROCK
+Debil: Agua, Planta, Lucha, Tierra, Acero
+Resiste: Normal, Fuego, Veneno, Volador
+Inmune: 
+Fuerte: Fuego, Hielo, Volador, Bicho
+
+[13]
+Tipo: Fantasma
+Interno: GHOST
+Debil: Fantasma, Siniestro
+Resiste: Veneno, Bicho
+Inmune: Normal, Lucha
+Fuerte: Psíquico, Fantasma
+
+[14]
+Tipo: Dragón
+Interno: DRAGON
+Debil: Hielo, Dragón, Hada
+Resiste: Fuego, Agua, Eléctrico, Planta
+Inmune: 
+Fuerte: Dragón
+
+[15]
+Tipo: Siniestro
+Interno: DARK
+Debil: Lucha, Bicho, Hada
+Resiste: Fantasma, Siniestro
+Inmune: Psíquico
+Fuerte: Psíquico, Fantasma
+
+[16]
+Tipo: Acero
+Interno: STEEL
+Debil: Fuego, Lucha, Tierra
+Resiste: Normal, Planta, Hielo, Volador, Psíquico, Bicho, Roca, Dragón, Acero, Hada
+Inmune: Veneno
+Fuerte: Hielo, Roca, Hada
+
+[17]
+Tipo: Hada
+Interno: FAIRY
+Debil: Veneno, Acero
+Resiste: Lucha, Bicho, Siniestro
+Inmune: Dragón
+Fuerte: Lucha, Dragón, Siniestro
