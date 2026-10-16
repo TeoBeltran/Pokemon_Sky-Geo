@@ -1063,7 +1063,8 @@ Color=Red
 Habitat=Cave
 RegionalNumbers=51
 Kind=Pluricelular
-Pokedex=Son millones de microorganismos trabajando juntos. Tienen poco control sobre su cuerpo así que se mueven erráticamente.
+Pokedex=Pokémon trompo.
+FormNames=
 WildItemUncommon=SOFTSAND
 BattlerPlayerY=-8
 BattlerEnemyY=27
@@ -1092,12 +1093,13 @@ Color=Red
 Habitat=Cave
 RegionalNumbers=52
 Kind=Democracia
-Pokedex=Los microorganismos formaron un lazo psíquico para poder controlar su cuerpo mejor. Detecta a sus presas bajo tierra y ataca con sus fuertes mandíbulas.
+Pokedex=Pokémon trompo boleadora..
+FormNames=
 WildItemUncommon=SOFTSAND
 BattlerPlayerY=-8
 BattlerEnemyY=8
 BattlerAltitude=0
-Evolutions=SIGMADEEP,Item,KINGSROCK
+Evolutions=
 [40]
 Name=Sigmadeep
 InternalName=SIGMADEEP
@@ -3194,6 +3196,10 @@ BattlerPlayerY=-1
 BattlerEnemyY=14
 BattlerAltitude=0
 Evolutions=
+
+
+
+
 [115]
 Name=Wirchufe
 InternalName=WIRCHUFE
@@ -3248,10 +3254,6 @@ BattlerPlayerY=-1
 BattlerEnemyY=26
 BattlerAltitude=0
 Evolutions=AURIEL,Level,24,LUCIFALL,HasMove,CRUSHCLAW
-
-
-
-
 [117]
 Name=Auriel
 InternalName=AURIEL
@@ -6183,7 +6185,6 @@ Weight=19.2
 Color=Purple
 Kind=Mofeta
 Pokedex=Se protege expulsando un fluido nocivo por su parte trasera. El hedor dura 24 horas.
-FormNames=
 WildItemUncommon=PECHABERRY
 BattlerPlayerY=18
 BattlerEnemyY=26
@@ -6211,7 +6212,6 @@ Weight=38.0
 Color=Purple
 Kind=Mofeta
 Pokedex=Para atacar, emite un fluido maloliente por la punta de su cola que puede llegar a más de 50 m.
-FormNames=
 WildItemUncommon=PECHABERRY
 BattlerPlayerY=7
 BattlerEnemyY=22
