@@ -46,7 +46,7 @@ const S = {
   list:[], byId:new Map(), byInt:new Map(), prevo:new Map(),
   moves:new Map(), abilities:new Map(), items:new Map(), tm:new Map(), tmOrder:[],
   loaded:{}, tmNo:new Map(),
-  filter:{q:"",types:[],mono:false,wild:false,nowild:false,final:false,esp:true,sort:"id",dir:"asc"},
+  filter:{q:"",types:[],mono:false,wild:false,nowild:false,base:false,final:false,esp:true,sort:"id",dir:"asc"},
   enc:new Map(), formData:new Map(),
   shiny:false, listScroll:0
 };
@@ -399,12 +399,12 @@ function syncChips(){
     const on = S.filter.types.includes(b.dataset.type);
     b.classList.toggle("on", on); b.setAttribute("aria-pressed", on);
   });
-  for (const [id,key] of [["#optMono","mono"],["#optWild","wild"],["#optNoWild","nowild"],["#optFinal","final"],["#optEsp","esp"]]){ const b = $(id); if (!b) continue; b.classList.toggle("on", S.filter[key]); b.setAttribute("aria-pressed", S.filter[key]); }
+  for (const [id,key] of [["#optMono","mono"],["#optWild","wild"],["#optNoWild","nowild"],["#optBase","base"],["#optFinal","final"],["#optEsp","esp"]]){ const b = $(id); if (!b) continue; b.classList.toggle("on", S.filter[key]); b.setAttribute("aria-pressed", S.filter[key]); }
   for (const id of ["#optWild","#optNoWild"]){ const w = $(id); if (w) w.classList.toggle("hidden", !S.loaded.encounters); }
 }
 
 function filtered(){
-  const {q,types,mono,wild,nowild,final,esp,sort,dir} = S.filter;
+  const {q,types,mono,wild,nowild,base,final,esp,sort,dir} = S.filter;
   const qq = q.trim().toLowerCase();
   const qn = /^#?\d+$/.test(qq) ? parseInt(qq.replace("#",""),10) : null;
   let arr = S.list.filter(p => {
@@ -413,6 +413,7 @@ function filtered(){
     if (mono && p.types.length !== 1) return false;
     if (wild && !S.enc.has((p.internal||"").toUpperCase())) return false;
     if (nowild && S.enc.has((p.internal||"").toUpperCase())) return false;
+    if (base && S.prevo.has(p.id)) return false;
     if (final && p.evo.some(e => S.byInt.get(e.to))) return false;
     if (!esp && ((p.id >= 1 && p.id <= 18) || (p.id >= 157 && p.id <= 165))) return false;
     return true;
@@ -814,11 +815,12 @@ on("#q","input", e => { clearTimeout(qT); qT = setTimeout(()=>{ S.filter.q = e.t
 on("#optMono","click", () => { S.filter.mono = !S.filter.mono; renderList(); });
 on("#optWild","click", () => { S.filter.wild = !S.filter.wild; if (S.filter.wild) S.filter.nowild = false; renderList(); });
 on("#optNoWild","click", () => { S.filter.nowild = !S.filter.nowild; if (S.filter.nowild) S.filter.wild = false; renderList(); });
+on("#optBase","click", () => { S.filter.base = !S.filter.base; renderList(); });
 on("#optFinal","click", () => { S.filter.final = !S.filter.final; renderList(); });
 on("#optEsp","click", () => { S.filter.esp = !S.filter.esp; renderList(); });
 on("#sortSel","change", e => { S.filter.sort = e.target.value; renderList(); });
 on("#sortDir","change", e => { S.filter.dir = e.target.value; renderList(); });
-on("#btnClear","click", () => { S.filter = {q:"",types:[],mono:false,wild:false,nowild:false,final:false,esp:true,sort:"id",dir:"asc"}; $("#q").value=""; renderList(); });
+on("#btnClear","click", () => { S.filter = {q:"",types:[],mono:false,wild:false,nowild:false,base:false,final:false,esp:true,sort:"id",dir:"asc"}; $("#q").value=""; renderList(); });
 document.querySelectorAll("table.dex th[data-k]").forEach(th => th.onclick = () => {
   const k = th.dataset.k;
   if (S.filter.sort === k) S.filter.dir = S.filter.dir === "asc" ? "desc" : "asc";
