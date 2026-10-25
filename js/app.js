@@ -46,7 +46,7 @@ const S = {
   list:[], byId:new Map(), byInt:new Map(), prevo:new Map(),
   moves:new Map(), abilities:new Map(), items:new Map(), tm:new Map(), tmOrder:[],
   loaded:{}, tmNo:new Map(),
-  filter:{q:"",types:[],mono:false,wild:false,nowild:false,sort:"id",dir:"asc"},
+  filter:{q:"",types:[],mono:false,wild:false,nowild:false,final:false,esp:true,sort:"id",dir:"asc"},
   enc:new Map(), formData:new Map(),
   shiny:false, listScroll:0
 };
@@ -337,13 +337,33 @@ async function loadData(){
     const box = $("#statusBox"); box.classList.add("error");
     $("#statusTitle").textContent = "No se pudieron cargar los datos";
     $("#statusText").innerHTML = location.protocol === "file:"
-      ? "Abriste el archivo directo desde la PC y el navegador bloquea la lectura de <code>data/</code>.<br>Subilo a GitHub Pages o abrilo con un servidor local (por ejemplo <code>python -m http.server</code> en la carpeta)."
+      ? "Abriste el archivo directo desde la PC y el navegador bloquea la lectura de <code>data/</code>.<br>Elegí la carpeta <code>data</code> para probarla en local."
       : "Revisá que exista <code>"+esc(DATA_FILES.pokemon)+"</code>." + (failed.length ? "<br><small>"+failed.map(esc).join("<br>")+"</small>" : "");
     $("#statusBox .pball").classList.remove("spin");
+    if (location.protocol === "file:") localPicker();
     return;
   }
   if (failed.length) console.warn("No se cargaron:", failed);
   afterLoad();
+}
+
+function localPicker(){
+  const inp = el("input",{type:"file",multiple:"",webkitdirectory:"",class:"hidden"});
+  const btn = el("button",{class:"btn",style:"margin-top:14px",onclick:()=>{ inp.value = ""; inp.click(); }}, "📂 Elegir carpeta data");
+  inp.onchange = async () => {
+    const byName = new Map([...inp.files].map(f => [f.name.toLowerCase(), f]));
+    const got = [];
+    for (const [kind, url] of Object.entries(DATA_FILES)){
+      const f = byName.get(url.split("/").pop().toLowerCase());
+      if (f) got.push([kind, await f.text()]);
+    }
+    got.sort((a,b)=>(a[0]==="pokemon")-(b[0]==="pokemon") || (b[0]==="items")-(a[0]==="items"));
+    for (const [kind, txt] of got){ try { applyText(kind, txt); } catch(e){ console.error(kind, e); } }
+    if (!S.list.length){ toast("No encontré " + DATA_FILES.pokemon.split("/").pop() + " en esa carpeta"); return; }
+    $("#statusBox").classList.remove("error");
+    afterLoad();
+  };
+  $("#statusBox").append(btn, inp);
 }
 
 function afterLoad(){
@@ -379,12 +399,12 @@ function syncChips(){
     const on = S.filter.types.includes(b.dataset.type);
     b.classList.toggle("on", on); b.setAttribute("aria-pressed", on);
   });
-  for (const [id,key] of [["#optMono","mono"],["#optWild","wild"],["#optNoWild","nowild"]]){ const b = $(id); if (!b) continue; b.classList.toggle("on", S.filter[key]); b.setAttribute("aria-pressed", S.filter[key]); }
+  for (const [id,key] of [["#optMono","mono"],["#optWild","wild"],["#optNoWild","nowild"],["#optFinal","final"],["#optEsp","esp"]]){ const b = $(id); if (!b) continue; b.classList.toggle("on", S.filter[key]); b.setAttribute("aria-pressed", S.filter[key]); }
   for (const id of ["#optWild","#optNoWild"]){ const w = $(id); if (w) w.classList.toggle("hidden", !S.loaded.encounters); }
 }
 
 function filtered(){
-  const {q,types,mono,wild,nowild,sort,dir} = S.filter;
+  const {q,types,mono,wild,nowild,final,esp,sort,dir} = S.filter;
   const qq = q.trim().toLowerCase();
   const qn = /^#?\d+$/.test(qq) ? parseInt(qq.replace("#",""),10) : null;
   let arr = S.list.filter(p => {
@@ -393,6 +413,8 @@ function filtered(){
     if (mono && p.types.length !== 1) return false;
     if (wild && !S.enc.has((p.internal||"").toUpperCase())) return false;
     if (nowild && S.enc.has((p.internal||"").toUpperCase())) return false;
+    if (final && p.evo.some(e => S.byInt.get(e.to))) return false;
+    if (!esp && ((p.id >= 1 && p.id <= 18) || (p.id >= 157 && p.id <= 165))) return false;
     return true;
   });
   const m = dir === "desc" ? -1 : 1;
@@ -713,7 +735,7 @@ function renderDetail(id, formN){
   for (const [k,label] of STATS){
     const val = V.st[k];
     stats.append(el("div",{class:"statrow"}, el("span",{class:"sn"},label), el("span",{class:"sv num"},val),
-      el("div",{class:"bar"}, el("i",{style:`width:${Math.min(100,val/255*100)}%;background:${statColor(val)}`})),
+      el("div",{class:"bar"}, el("i",{style:`width:${Math.min(100,val/150*100)}%;background:${statColor(val)}`})),
       el("span",{class:"ev"}, V.evs[k] ? `+${V.evs[k]} EV` : "")));
   }
   stats.append(el("div",{class:"statrow total"}, el("span",{class:"sn"},"Total"), el("span",{class:"sv num"},V.st.bst), el("div"), el("span")));
@@ -792,9 +814,11 @@ on("#q","input", e => { clearTimeout(qT); qT = setTimeout(()=>{ S.filter.q = e.t
 on("#optMono","click", () => { S.filter.mono = !S.filter.mono; renderList(); });
 on("#optWild","click", () => { S.filter.wild = !S.filter.wild; if (S.filter.wild) S.filter.nowild = false; renderList(); });
 on("#optNoWild","click", () => { S.filter.nowild = !S.filter.nowild; if (S.filter.nowild) S.filter.wild = false; renderList(); });
+on("#optFinal","click", () => { S.filter.final = !S.filter.final; renderList(); });
+on("#optEsp","click", () => { S.filter.esp = !S.filter.esp; renderList(); });
 on("#sortSel","change", e => { S.filter.sort = e.target.value; renderList(); });
 on("#sortDir","change", e => { S.filter.dir = e.target.value; renderList(); });
-on("#btnClear","click", () => { S.filter = {q:"",types:[],mono:false,wild:false,nowild:false,sort:"id",dir:"asc"}; $("#q").value=""; renderList(); });
+on("#btnClear","click", () => { S.filter = {q:"",types:[],mono:false,wild:false,nowild:false,final:false,esp:true,sort:"id",dir:"asc"}; $("#q").value=""; renderList(); });
 document.querySelectorAll("table.dex th[data-k]").forEach(th => th.onclick = () => {
   const k = th.dataset.k;
   if (S.filter.sort === k) S.filter.dir = S.filter.dir === "asc" ? "desc" : "asc";
@@ -832,4 +856,6 @@ function fatal(msg){
   const pb = $("#statusBox .pball"); if (pb) pb.classList.remove("spin");
 }
 loadData().catch(err => { console.error(err); fatal(err && err.message || String(err)); });
+function setTb(){ const t = document.querySelector(".topbar"); if (t) document.documentElement.style.setProperty("--tb", t.offsetHeight + "px"); }
+setTb(); window.addEventListener("resize", setTb);
 })();

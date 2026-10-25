@@ -106,7 +106,7 @@ tr:hover .icon img,.evo-node:hover .icon img{animation:iconbob .5s steps(1) infi
 .type.lg{font-size:13px;padding:4px 14px;line-height:20px}
 
 /* ---------- Detail ---------- */
-.back-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.back-row{display:flex;align-items:center;gap:10px;margin:-10px 0 4px;padding:10px 0;position:sticky;top:var(--tb,60px);z-index:15;background:var(--bg)}
 .navbtn{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 12px;cursor:pointer;color:var(--text-2);font-weight:600;box-shadow:var(--shadow);max-width:46%}
 .navbtn:hover{color:var(--text);border-color:var(--border-strong)}
 .navbtn .icon{width:32px;height:32px}
