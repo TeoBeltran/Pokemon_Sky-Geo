@@ -1064,7 +1064,6 @@ Habitat=Cave
 RegionalNumbers=51
 Kind=Pluricelular
 Pokedex=Pokémon trompo.
-FormNames=
 WildItemUncommon=SOFTSAND
 BattlerPlayerY=-8
 BattlerEnemyY=27
@@ -1094,7 +1093,6 @@ Habitat=Cave
 RegionalNumbers=52
 Kind=Democracia
 Pokedex=Pokémon trompo boleadora..
-FormNames=
 WildItemUncommon=SOFTSAND
 BattlerPlayerY=-8
 BattlerEnemyY=8
@@ -3061,6 +3059,14 @@ BattlerPlayerY=-7
 BattlerEnemyY=14
 BattlerAltitude=-10
 Evolutions=ZAPYCEROS,Level,28
+
+
+
+
+
+
+
+
 [110]
 Name=Zapyceros
 InternalName=ZAPYCEROS
@@ -3143,8 +3149,8 @@ BattlerEnemyY=8
 BattlerAltitude=0
 Evolutions=
 [113]
-Name=Fishucker
-InternalName=FISHUCKER
+Name=Darpez
+InternalName=DARPEZ
 Type1=WATER
 BaseStats=45,65,20,65,90,20
 GenderRate=Female50Percent
@@ -3168,10 +3174,10 @@ Pokedex=Se adhieren a superficies con sus bocas. Se cree que viarajon pegados a 
 BattlerPlayerY=-1
 BattlerEnemyY=30
 BattlerAltitude=0
-Evolutions=SHUKERIDAE,Level,24
+Evolutions=FIJECTIL,Level,24
 [114]
-Name=Shukeridae
-InternalName=SHUKERIDAE
+Name=Fijectil
+InternalName=FIJECTIL
 Type1=WATER
 BaseStats=70,95,40,95,120,40
 GenderRate=Female50Percent
@@ -3196,10 +3202,6 @@ BattlerPlayerY=-1
 BattlerEnemyY=14
 BattlerAltitude=0
 Evolutions=
-
-
-
-
 [115]
 Name=Wirchufe
 InternalName=WIRCHUFE
@@ -3779,7 +3781,7 @@ EffortPoints=0,1,0,0,0,0
 Rareness=45
 Happiness=75
 Abilities=STRONGJAW,MAGNETPULL
-Moves=1,TACKLE,1,LEER,5,THUNDERSHOCK,8,BITE,11,ROCKTHROW,14,CHARGE,17,THUNDERFANG,20,ROCKTOMB,23,SCARYFACE,26,SPARK,29,STOMP,32,CRUNCH,35,ROCKSLIDE,38,DISCHARGE,41,WILDCHARGE,45,STONEEDGE,50,THUNDER
+Moves=1,LEER,1,TACKLE,5,THUNDERSHOCK,8,BITE,11,ROCKTHROW,14,CHARGE,17,THUNDERFANG,20,ROCKTOMB,23,SCARYFACE,26,SPARK,29,STOMP,32,CRUNCH,35,ROCKSLIDE,38,DISCHARGE,41,WILDCHARGE,45,STONEEDGE,50,SUPERCELLSLAM
 Compatibility=Field,Mineral
 StepsToHatch=5355
 Height=2
@@ -3805,7 +3807,7 @@ EffortPoints=0,2,0,0,0,0
 Rareness=45
 Happiness=75
 Abilities=STRONGJAW,MAGNETPULL
-Moves=1,TACKLE,1,LEER,5,THUNDERSHOCK,8,BITE,11,ROCKTHROW,14,CHARGE,17,THUNDERFANG,20,ROCKTOMB,23,SCARYFACE,26,SPARK,29,STOMP,32,CRUNCH,35,ROCKSLIDE,38,DISCHARGE,41,WILDCHARGE,45,STONEEDGE,50,THUNDER
+Moves=1,LEER,1,TACKLE,5,THUNDERSHOCK,8,BITE,11,ROCKTHROW,14,CHARGE,17,THUNDERFANG,20,ROCKTOMB,23,SCARYFACE,26,SPARK,29,STOMP,32,CRUNCH,35,ROCKSLIDE,38,DISCHARGE,41,WILDCHARGE,45,STONEEDGE,50,THUNDER
 Compatibility=Field,Mineral
 StepsToHatch=5355
 Height=2
@@ -3820,7 +3822,7 @@ BattlerAltitude=0
 Evolutions=
 [138]
 Name=FosilAgua1
-InternalName=FosilAgua1
+InternalName=FOSILAGUA1
 Type1=ROCK
 Type2=WATER
 BaseStats=47,85,67,55,60,45
@@ -3844,10 +3846,10 @@ Pokedex=-
 BattlerPlayerY=-1
 BattlerEnemyY=17
 BattlerAltitude=0
-Evolutions=FosilAgua2,Level,40
+Evolutions=FOSILAGUA2,Level,40
 [139]
 Name=FosilAgua2
-InternalName=FosilAgua2
+InternalName=FOSILAGUA2
 Type1=ROCK
 Type2=WATER
 BaseStats=67,110,97,60,100,65
@@ -5150,6 +5152,8 @@ Habitat=Cave
 RegionalNumbers=119
 Kind=Goloso
 Pokedex=Los Sableye se asentuaron en las cuevas ricas en gemas nativas. Suelen cazar Rodopink y rompen sus corazas con sus fuertes dientes.
+WildItemCommon=ROCKGEM
+WildItemUncommon=DARKGEM
 BattlerPlayerY=-8
 BattlerEnemyY=20
 BattlerAltitude=0
@@ -5177,8 +5181,8 @@ Color=Red
 Habitat=Forest
 Kind=Némesis
 Pokedex=Los Sableye se asentuaron en las cuevas ricas en gemas nativas. Suelen cazar Rodopink y rompen sus corazas con sus fuertes dientes.
-WildItemCommon=TINYMUSHROOM
-WildItemUncommon=BIGMUSHROOM
+WildItemCommon=ROCKGEM
+WildItemUncommon=DARKGEM
 BattlerPlayerY=-1
 BattlerEnemyY=14
 BattlerAltitude=0
@@ -6110,8 +6114,8 @@ Evolutions=
 [220]
 Name=Croagunk
 InternalName=CROAGUNK
-Type1=POISON
-Type2=FIGHTING
+Type1=GROUND
+Type2=PSYCHIC
 BaseStats=48,61,40,50,61,40
 GenderRate=Female50Percent
 GrowthRate=Medium
@@ -6130,6 +6134,7 @@ Weight=23.0
 Color=Blue
 Kind=Boca Tóxica
 Pokedex=Tiene bolsas venenosas en las mejillas. Pilla desprevenidos a sus rivales para pincharles.
+FormNames=
 WildItemUncommon=BLACKSLUDGE
 BattlerPlayerY=17
 BattlerEnemyY=25
@@ -6138,8 +6143,8 @@ Evolutions=TOXICROAK,Level,37
 [221]
 Name=Toxicroak
 InternalName=TOXICROAK
-Type1=POISON
-Type2=FIGHTING
+Type1=GROUND
+Type2=PSYCHIC
 BaseStats=83,106,65,85,86,65
 GenderRate=Female50Percent
 GrowthRate=Medium
@@ -6157,6 +6162,7 @@ Weight=44.4
 Color=Blue
 Kind=Boca Tóxica
 Pokedex=Sus garras segregan una toxina tan potente que un simple arañazo puede ser mortal.
+FormNames=
 WildItemUncommon=BLACKSLUDGE
 BattlerPlayerY=8
 BattlerEnemyY=22
@@ -6166,7 +6172,7 @@ Evolutions=
 Name=Stunky
 InternalName=STUNKY
 Type1=POISON
-Type2=ICE
+Type2=DARK
 BaseStats=63,63,47,74,41,41
 GenderRate=Female50Percent
 GrowthRate=Medium

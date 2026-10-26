@@ -1,8 +1,6 @@
 #==============================================================================
-# COMPETITIVO - recomendaciones generadas a partir de los datos del juego
+# COMPETITIVO
 # (tipos, estadísticas, movimientos que aprende, habilidades y objetos).
-# Podés editar cualquier línea a mano: la web muestra lo que haya acá.
-#
 # Rol=, Puntuacion= (0 a 5, admite medias: 3.5), Habilidad=, Naturaleza=, EVs=,
 # Set1= / Set2= (Nombre | Mov | Mov | Mov | Mov),
 # Objetos= (separados por |), Compañeros= (separados por |), Debilidades=, Nota=
