@@ -392,10 +392,10 @@ Pokedex=Sus pezuñas y cuernos son tan duros como el hierro y pueden alcanzar te
 BattlerPlayerY=-8
 BattlerEnemyY=11
 BattlerAltitude=0
-Evolutions=HAFATSYRO,Level,37
+Evolutions=HEFATSYRO,Level,37
 [15]
 Name=Hefatsyro
-InternalName=HAFATSYRO
+InternalName=HEFATSYRO
 Type1=FIRE
 Type2=STEEL
 BaseStats=84,110,122,62,75,81
@@ -418,7 +418,7 @@ RegionalNumbers=175
 Kind=Cabronaso
 Pokedex=Puede hacer arder sus pezuñas a altísimas temperaturas y atacar con metal fundido a sus enemigos. Las llamas en su espalda lo ayudan a impulsarse.
 FormNames=BASE,ANCESTRAL
-BattlerPlayerY=-8
+BattlerPlayerY=7
 BattlerEnemyY=10
 BattlerAltitude=0
 Evolutions=
@@ -2231,8 +2231,8 @@ BattlerEnemyY=21
 BattlerAltitude=0
 Evolutions=
 [80]
-Name=Nacli
-InternalName=NACLI
+Name=Mossi
+InternalName=MOSSI
 Type1=ROCK
 BaseStats=55,55,75,25,35,35
 GenderRate=Genderless
@@ -2256,10 +2256,10 @@ WildItemCommon=LIGHTCLAY
 BattlerPlayerY=-1
 BattlerEnemyY=36
 BattlerAltitude=0
-Evolutions=NACLSTACK,Level,24
+Evolutions=MOSSTACK,Level,24
 [81]
-Name=Naclstack
-InternalName=NACLSTACK
+Name=Mosstack
+InternalName=MOSSTACK
 Type1=ROCK
 BaseStats=60,60,100,35,35,65
 GenderRate=Female50Percent
@@ -2818,15 +2818,15 @@ Evolutions=
 Name=Fowlivor
 InternalName=FOWLIVOR
 Type1=FLYING
-BaseStats=85,92,89,40,63,108
+BaseStats=95,72,98,39,97,99
 GenderRate=Female50Percent
 GrowthRate=Parabolic
 BaseEXP=200
 EffortPoints=0,0,0,0,0,2
 Rareness=100
 Happiness=75
-Abilities=DANCER,OWNTEMPO
-HiddenAbility=GALEWINGS
+Abilities=GALEWINGS
+HiddenAbility=DANCER
 Moves=1,GROWL,1,ASTONISH,1,SING,1,PECK,1,SKYATTACK,1,PLUCK,3,ASTONISH,5,SING,7,FURYATTACK,9,SAFEGUARD,11,DISARMINGVOICE,14,MIST,17,ROUND,20,NATURALGIFT,23,WINGATTACK,26,REFRESH,30,FEATHERDANCE,34,REVELATIONDANCE,38,ACROBATICS,42,AIRSLASH,46,PERISHSONG,50,TEETERDANCE,55,MIRRORMOVE,59,SKYATTACK
 Compatibility=Flying
 StepsToHatch=5355
@@ -2836,6 +2836,7 @@ Color=Blue
 RegionalNumbers=90
 Kind=Carnaval
 Pokedex=Aparece donde haya música para bailar. Adora ser el centro de atención y luchará contra quién intente tomar su lugar.
+FormNames=0,1,2,3
 BattlerPlayerY=-1
 BattlerEnemyY=15
 BattlerAltitude=0
@@ -2896,6 +2897,14 @@ BattlerPlayerY=-1
 BattlerEnemyY=9
 BattlerAltitude=0
 Evolutions=
+
+
+
+
+
+
+
+
 [104]
 Name=Wilch
 InternalName=WILCH
@@ -3059,14 +3068,6 @@ BattlerPlayerY=-7
 BattlerEnemyY=14
 BattlerAltitude=-10
 Evolutions=ZAPYCEROS,Level,28
-
-
-
-
-
-
-
-
 [110]
 Name=Zapyceros
 InternalName=ZAPYCEROS
@@ -4015,7 +4016,7 @@ Evolutions=
 Name=Capugol
 InternalName=CAPUGOL
 Type1=FIGHTING
-BaseStats=80,80,80,80,80,80
+BaseStats=80,95,75,105,70,75
 GenderRate=Female50Percent
 GrowthRate=Parabolic
 BaseEXP=180
@@ -4034,6 +4035,7 @@ Habitat=Grassland
 RegionalNumbers=89
 Kind=Jugador
 Pokedex=j
+FormNames=mediocampista,delantero,defensa,arquero
 BattlerPlayerY=-1
 BattlerEnemyY=16
 BattlerAltitude=0
@@ -6114,8 +6116,8 @@ Evolutions=
 [220]
 Name=Croagunk
 InternalName=CROAGUNK
-Type1=GROUND
-Type2=PSYCHIC
+Type1=POISON
+Type2=FIGHTING
 BaseStats=48,61,40,50,61,40
 GenderRate=Female50Percent
 GrowthRate=Medium
@@ -6134,7 +6136,6 @@ Weight=23.0
 Color=Blue
 Kind=Boca Tóxica
 Pokedex=Tiene bolsas venenosas en las mejillas. Pilla desprevenidos a sus rivales para pincharles.
-FormNames=
 WildItemUncommon=BLACKSLUDGE
 BattlerPlayerY=17
 BattlerEnemyY=25
@@ -6143,8 +6144,8 @@ Evolutions=TOXICROAK,Level,37
 [221]
 Name=Toxicroak
 InternalName=TOXICROAK
-Type1=GROUND
-Type2=PSYCHIC
+Type1=POISON
+Type2=FIGHTING
 BaseStats=83,106,65,85,86,65
 GenderRate=Female50Percent
 GrowthRate=Medium
@@ -6162,7 +6163,6 @@ Weight=44.4
 Color=Blue
 Kind=Boca Tóxica
 Pokedex=Sus garras segregan una toxina tan potente que un simple arañazo puede ser mortal.
-FormNames=
 WildItemUncommon=BLACKSLUDGE
 BattlerPlayerY=8
 BattlerEnemyY=22
